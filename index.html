@@ -466,6 +466,22 @@ hr.sep { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
 
 /* ── hide-tr mode ── */
 .hide-tr .tr { display: none !important; }
+/* ── Contraction chips ── */
+.contr {
+  display: inline-block;
+  font-size: 0.7em;
+  font-weight: 600;
+  font-family: var(--font-mono, monospace);
+  color: var(--muted-fg);
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0px 4px;
+  margin-left: 3px;
+  vertical-align: middle;
+  opacity: 0.85;
+  white-space: nowrap;
+}
 /* Anchor on the preceding German word — same look as .prep-tip */
 .tr-anchor {
   cursor: help;
@@ -802,6 +818,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   border-bottom: 1px dashed oklch(0.65 0.05 250 / .6);
   white-space: nowrap;
 }
+.contr { cursor: help; }
 @media (max-width: 680px) {
   .cases-grid { grid-template-columns: repeat(2, 1fr); }
   .case-col:nth-child(2) { border-right: none; }
@@ -1735,7 +1752,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   <div class="card-header"><span class="badge badge-num">15</span><div class="card-title">Конъюнктив II <span class="de">(Konjunktiv II)</span></div></div>
   <div class="card-content">
     <div class="tbl-wrap"><table>
-      <thead><tr><th>Глагол</th><th>K-II (ich)</th><th></th></tr></thead>
+      <thead><tr><th>Глагол</th><th>K-II (ich) <span class="tr">(сослаг. накл.)</span></th><th></th></tr></thead>
       <tbody>
         <tr><td>sein <span class="tr">(быть)</span></td><td class="vf">wäre</td><td><span class="tr">я бы был</span></td></tr>
         <tr><td>haben <span class="tr">(иметь)</span></td><td class="vf">hätte</td><td><span class="tr">я бы имел</span></td></tr>
@@ -2172,17 +2189,17 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   <div class="card-content">
     <div class="alert alert-info"><span class="alert-icon">💡</span><div class="alert-body"><p><strong>da-/dar-</strong> = указывает на вещь/идею (не на человека!) &nbsp;·&nbsp; Перед гласным: <strong>dar-/wor-</strong></p></div></div>
     <div class="tbl-wrap"><table>
-      <thead><tr><th>Предлог</th><th>da-форма</th><th>Значение</th><th>wo-форма</th></tr></thead>
+      <thead><tr><th>Предлог</th><th>da-форма <span class="tr">(указывает на вещь)</span></th><th>wo-форма</th></tr></thead>
       <tbody>
-        <tr><td>auf <span class="tr">(на)</span></td><td class="vf">darauf</td><td><span class="tr">на этом</span></td><td>worauf? <span class="tr">(на чём?)</span></td></tr>
-        <tr><td>für <span class="tr">(для)</span></td><td class="vf">dafür</td><td><span class="tr">для этого</span></td><td>wofür? <span class="tr">(для чего?)</span></td></tr>
-        <tr><td>mit <span class="tr">(с)</span></td><td class="vf">damit</td><td><span class="tr">с этим</span></td><td>womit? <span class="tr">(с чем?)</span></td></tr>
-        <tr><td>über <span class="tr">(о/над)</span></td><td class="vf">darüber</td><td><span class="tr">об этом</span></td><td>worüber? <span class="tr">(о чём?)</span></td></tr>
-        <tr><td>von <span class="tr">(от)</span></td><td class="vf">davon</td><td><span class="tr">от этого</span></td><td>wovon? <span class="tr">(от чего?)</span></td></tr>
-        <tr><td>zu <span class="tr">(к)</span></td><td class="vf">dazu</td><td><span class="tr">к этому</span></td><td>wozu? <span class="tr">(к чему?)</span></td></tr>
-        <tr><td>in <span class="tr">(в)</span></td><td class="vf">darin</td><td><span class="tr">в этом</span></td><td>worin? <span class="tr">(в чём?)</span></td></tr>
-        <tr><td>an <span class="tr">(у/на)</span></td><td class="vf">daran</td><td><span class="tr">об этом</span></td><td>woran? <span class="tr">(о чём?)</span></td></tr>
-        <tr><td>nach <span class="tr">(после)</span></td><td class="vf">danach</td><td><span class="tr">после этого</span></td><td>wonach? <span class="tr">(после чего?)</span></td></tr>
+        <tr><td>auf <span class="tr">(на)</span></td><td class="vf"><span class="tr-anchor" data-tip="на этом">darauf</span> <span class="tr">(на этом)</span></td><td>worauf? <span class="tr">(на чём?)</span></td></tr>
+        <tr><td>für <span class="tr">(для)</span></td><td class="vf"><span class="tr-anchor" data-tip="для этого">dafür</span> <span class="tr">(для этого)</span></td><td>wofür? <span class="tr">(для чего?)</span></td></tr>
+        <tr><td>mit <span class="tr">(с)</span></td><td class="vf"><span class="tr-anchor" data-tip="с этим">damit</span> <span class="tr">(с этим)</span></td><td>womit? <span class="tr">(с чем?)</span></td></tr>
+        <tr><td>über <span class="tr">(о/над)</span></td><td class="vf"><span class="tr-anchor" data-tip="об этом">darüber</span> <span class="tr">(об этом)</span></td><td>worüber? <span class="tr">(о чём?)</span></td></tr>
+        <tr><td>von <span class="tr">(от)</span></td><td class="vf"><span class="tr-anchor" data-tip="от этого">davon</span> <span class="tr">(от этого)</span></td><td>wovon? <span class="tr">(от чего?)</span></td></tr>
+        <tr><td>zu <span class="tr">(к)</span></td><td class="vf"><span class="tr-anchor" data-tip="к этому">dazu</span> <span class="tr">(к этому)</span></td><td>wozu? <span class="tr">(к чему?)</span></td></tr>
+        <tr><td>in <span class="tr">(в)</span></td><td class="vf"><span class="tr-anchor" data-tip="в этом">darin</span> <span class="tr">(в этом)</span></td><td>worin? <span class="tr">(в чём?)</span></td></tr>
+        <tr><td>an <span class="tr">(у/на)</span></td><td class="vf"><span class="tr-anchor" data-tip="об этом">daran</span> <span class="tr">(об этом)</span></td><td>woran? <span class="tr">(о чём?)</span></td></tr>
+        <tr><td>nach <span class="tr">(после)</span></td><td class="vf"><span class="tr-anchor" data-tip="после этого">danach</span> <span class="tr">(после этого)</span></td><td>wonach? <span class="tr">(после чего?)</span></td></tr>
       </tbody>
     </table></div>
     <div class="alert alert-warn"><span class="alert-icon">⚠️</span><div class="alert-body"><p>На человека → предлог + местоимение: <em>Ich warte auf meinen Freund <span class="tr">(друга)</span> → auf <strong>ihn</strong></em> (не darauf!)</p></div></div>
@@ -2288,10 +2305,10 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
     <div class="tbl-wrap"><table>
       <thead><tr><th>Akkusativ</th><th>Dativ</th><th>Genitiv</th><th>Wechsel (Dat./Akk.)</th></tr></thead>
       <tbody><tr>
-        <td>durch <span class="tr">(сквозь)</span><br>für <span class="tr">(для)</span><br>gegen <span class="tr">(против)</span><br>ohne <span class="tr">(без)</span><br>um <span class="tr">(вокруг)</span><br>bis <span class="tr">(до)</span><br>entlang <span class="tr">(вдоль)</span></td>
-        <td>aus <span class="tr">(из)</span><br>bei <span class="tr">(у)</span><br>mit <span class="tr">(с)</span><br>nach <span class="tr">(после/в)</span><br>seit <span class="tr">(с/уже)</span><br>von <span class="tr">(от)</span><br>zu <span class="tr">(к)</span><br>gegenüber <span class="tr">(напротив)</span><br>außer <span class="tr">(кроме)</span></td>
+        <td>durch <span class="tr">(сквозь)</span> <span class="contr" data-tip="durch + das">durchs</span><br>für <span class="tr">(для)</span> <span class="contr" data-tip="für + das">fürs</span><br>gegen <span class="tr">(против)</span><br>ohne <span class="tr">(без)</span><br>um <span class="tr">(вокруг)</span> <span class="contr" data-tip="um + das">ums</span><br>bis <span class="tr">(до)</span><br>entlang <span class="tr">(вдоль)</span></td>
+        <td>aus <span class="tr">(из)</span><br>bei <span class="tr">(у)</span> <span class="contr" data-tip="bei + dem">beim</span><br>mit <span class="tr">(с)</span><br>nach <span class="tr">(после/в)</span><br>seit <span class="tr">(с/уже)</span><br>von <span class="tr">(от)</span> <span class="contr" data-tip="von + dem">vom</span><br>zu <span class="tr">(к)</span> <span class="contr" data-tip="zu + dem">zum</span> <span class="contr" data-tip="zu + der">zur</span><br>gegenüber <span class="tr">(напротив)</span><br>außer <span class="tr">(кроме)</span></td>
         <td>wegen <span class="tr">(из-за)</span><br>trotz <span class="tr">(несмотря)</span><br>während <span class="tr">(во время)</span><br>statt <span class="tr">(вместо)</span><br>aufgrund <span class="tr">(на основании)</span><br>innerhalb <span class="tr">(внутри)</span><br>außerhalb <span class="tr">(вне)</span><br>mithilfe <span class="tr">(с помощью)</span></td>
-        <td>an <span class="tr">(у/на)</span><br>auf <span class="tr">(на)</span><br>hinter <span class="tr">(за)</span><br>in <span class="tr">(в)</span><br>neben <span class="tr">(рядом)</span><br>über <span class="tr">(над/о)</span><br>unter <span class="tr">(под)</span><br>vor <span class="tr">(перед)</span><br>zwischen <span class="tr">(между)</span></td>
+        <td>an <span class="tr">(у/на)</span> <span class="contr" data-tip="an + dem">am</span> <span class="contr" data-tip="an + das">ans</span><br>auf <span class="tr">(на)</span> <span class="contr" data-tip="auf + das">aufs</span><br>hinter <span class="tr">(за)</span><br>in <span class="tr">(в)</span> <span class="contr" data-tip="in + dem">im</span> <span class="contr" data-tip="in + das">ins</span><br>neben <span class="tr">(рядом)</span><br>über <span class="tr">(над/о)</span> <span class="contr" data-tip="über + das">übers</span><br>unter <span class="tr">(под)</span><br>vor <span class="tr">(перед)</span> <span class="contr" data-tip="vor + das">vors</span><br>zwischen <span class="tr">(между)</span></td>
       </tr></tbody>
     </table></div>
   </div>
@@ -2376,7 +2393,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
     var pinned = null;
 
     function isTipTarget(el) {
-      return el && (el.classList.contains('prep-tip') || el.classList.contains('tr-anchor'));
+      return el && (el.classList.contains('prep-tip') || el.classList.contains('tr-anchor') || el.classList.contains('contr'));
     }
     function tipText(el) {
       return el.getAttribute('data-tip') || '';
@@ -2400,11 +2417,11 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
     function hide() { gTip.classList.remove('tip-visible'); }
 
     document.addEventListener('mouseover', function(e) {
-      var el = e.target.closest('.prep-tip, .tr-anchor');
+      var el = e.target.closest('.prep-tip, .tr-anchor, .contr');
       if (el && isTipTarget(el) && el !== pinned) show(el);
     });
     document.addEventListener('mouseout', function(e) {
-      var el = e.target.closest('.prep-tip, .tr-anchor');
+      var el = e.target.closest('.prep-tip, .tr-anchor, .contr');
       if (el && isTipTarget(el) && el !== pinned) hide();
     });
     document.addEventListener('click', function(e) {
