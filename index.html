@@ -493,6 +493,10 @@ hr.sep { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
   cursor: help;
   border-bottom: 1.5px dashed oklch(0.50 0.14 250 / .5);
 }
+.case-tip {
+  cursor: help;
+  border-bottom: 1.5px dashed oklch(0.50 0.09 250 / .4);
+}
 /* Global tooltip (appended to body by JS — never clipped by overflow:hidden) */
 #global-tip {
   position: fixed;
@@ -2870,7 +2874,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
     var pinned = null;
 
     function isTipTarget(el) {
-      return el && (el.classList.contains('prep-tip') || el.classList.contains('tr-anchor') || el.classList.contains('contr'));
+      return el && (el.classList.contains('prep-tip') || el.classList.contains('tr-anchor') || el.classList.contains('contr') || el.classList.contains('case-tip'));
     }
     function tipText(el) {
       return el.getAttribute('data-tip') || '';
@@ -2894,11 +2898,11 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
     function hide() { gTip.classList.remove('tip-visible'); }
 
     document.addEventListener('mouseover', function(e) {
-      var el = e.target.closest('.prep-tip, .tr-anchor, .contr');
+      var el = e.target.closest('.prep-tip, .tr-anchor, .contr, .case-tip');
       if (el && isTipTarget(el) && el !== pinned) show(el);
     });
     document.addEventListener('mouseout', function(e) {
-      var el = e.target.closest('.prep-tip, .tr-anchor, .contr');
+      var el = e.target.closest('.prep-tip, .tr-anchor, .contr, .case-tip');
       if (el && isTipTarget(el) && el !== pinned) hide();
     });
     document.addEventListener('click', function(e) {
@@ -3048,6 +3052,29 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
     else { toggleSidebar(); }
   }
   // Close sidebar when nav link clicked (mobile)
+  // ── Auto-attach case tooltips to all Nom./Akk./Dat./Gen. mentions ──
+  (function attachCaseTips() {
+    var tips = {
+      'Nominativ':  'Wer? / Was?\nподлежащее',
+      'Akkusativ':  'Wen? / Was?\nпрямое дополнение',
+      'Dativ':      'Wem?\nкосвенное дополнение',
+      'Genitiv':    'Wessen?\nпринадлежность',
+      'Nom.':       'Wer? / Was? → Nominativ',
+      'Akk.':       'Wen? / Was? → Akkusativ',
+      'Dat.':       'Wem? → Dativ',
+      'Gen.':       'Wessen? → Genitiv',
+    };
+    document.querySelectorAll('th, td, button.tab-btn').forEach(function(el) {
+      if (el.dataset.tip) return; // already annotated
+      if (el.children.length > 0) return; // skip complex cells
+      var text = el.textContent.trim();
+      if (tips[text]) {
+        el.setAttribute('data-tip', tips[text]);
+        el.classList.add('case-tip');
+      }
+    });
+  })();
+
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('aside a').forEach(function(a) {
       a.addEventListener('click', function() {
