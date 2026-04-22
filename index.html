@@ -1098,6 +1098,8 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
     <li><a href="#s2">2 · Личн. мест.</a></li>
     <li><a href="#s3">3 · Притяжат. мест.</a></li>
     <li><a href="#pronomen-ref">40 · Все мест. обзор</a></li>
+    <li><a href="#dieser-ref">42 · dieser / welcher</a></li>
+    <li><a href="#frage-ref">43 · Fragepronomen</a></li>
   </ul></details></li>
   <li><details open><summary class="nav-sep">Падежи</summary><ul class="nav-sub">
     <li><a href="#s4">4 · Nom. &amp; Akk.</a></li>
@@ -1263,14 +1265,16 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
     <div class="card-title">Личные местоимения <span class="de">(Personalpronomen)</span></div></div>
   <div class="card-content">
     <div class="tbl-wrap"><table>
-      <thead><tr><th>Лицо</th><th>Nom.</th><th>Akk.</th><th>Dat.</th></tr></thead>
+      <thead><tr><th>Лицо</th><th>Nom.</th><th>Akk.</th><th>Dat.</th><th>Gen. <span style="font-weight:400;font-size:10px;color:var(--muted-fg)">(редко)</span></th></tr></thead>
       <tbody>
-        <tr><td><strong>ich</strong> <span class="tr">(я)</span></td><td>ich <span class="tr">(я)</span></td><td>mich <span class="tr">(меня)</span></td><td>mir <span class="tr">(мне)</span></td></tr>
-        <tr><td><strong>du</strong> <span class="tr">(ты)</span></td><td>du <span class="tr">(ты)</span></td><td>dich <span class="tr">(тебя)</span></td><td>dir <span class="tr">(тебе)</span></td></tr>
-        <tr><td><strong>er/sie/es</strong> <span class="tr">(он/она/оно)</span></td><td>er/sie/es</td><td>ihn <span class="tr">(его)</span> / sie <span class="tr">(её)</span> / es <span class="tr">(его)</span></td><td>ihm <span class="tr">(ему)</span> / ihr <span class="tr">(ей)</span> / ihm <span class="tr">(ему)</span></td></tr>
-        <tr><td><strong>wir</strong> <span class="tr">(мы)</span></td><td>wir <span class="tr">(мы)</span></td><td>uns <span class="tr">(нас)</span></td><td>uns <span class="tr">(нам)</span></td></tr>
-        <tr><td><strong>ihr</strong> <span class="tr">(вы, неформ.)</span></td><td>ihr <span class="tr">(вы)</span></td><td>euch <span class="tr">(вас)</span></td><td>euch <span class="tr">(вам)</span></td></tr>
-        <tr><td><strong>sie/Sie</strong> <span class="tr">(они/Вы вежл.)</span></td><td>sie/Sie</td><td>sie <span class="tr">(их)</span> / Sie <span class="tr">(Вас)</span></td><td>ihnen <span class="tr">(им)</span> / Ihnen <span class="tr">(Вам)</span></td></tr>
+        <tr><td><strong>ich</strong> <span class="tr">(я)</span></td><td>ich</td><td>mich <span class="tr">(меня)</span></td><td>mir <span class="tr">(мне)</span></td><td>meiner <span class="tr">(меня)</span></td></tr>
+        <tr><td><strong>du</strong> <span class="tr">(ты)</span></td><td>du</td><td>dich <span class="tr">(тебя)</span></td><td>dir <span class="tr">(тебе)</span></td><td>deiner <span class="tr">(тебя)</span></td></tr>
+        <tr><td><strong>er</strong> <span class="tr">(он)</span></td><td>er</td><td>ihn <span class="tr">(его)</span></td><td>ihm <span class="tr">(ему)</span></td><td>seiner <span class="tr">(его)</span></td></tr>
+        <tr><td><strong>sie</strong> <span class="tr">(она)</span></td><td>sie</td><td>sie <span class="tr">(её)</span></td><td>ihr <span class="tr">(ей)</span></td><td>ihrer <span class="tr">(её)</span></td></tr>
+        <tr><td><strong>es</strong> <span class="tr">(оно)</span></td><td>es</td><td>es <span class="tr">(его)</span></td><td>ihm <span class="tr">(ему)</span></td><td>seiner <span class="tr">(его)</span></td></tr>
+        <tr><td><strong>wir</strong> <span class="tr">(мы)</span></td><td>wir</td><td>uns <span class="tr">(нас)</span></td><td>uns <span class="tr">(нам)</span></td><td>unser <span class="tr">(нас)</span></td></tr>
+        <tr><td><strong>ihr</strong> <span class="tr">(вы)</span></td><td>ihr</td><td>euch <span class="tr">(вас)</span></td><td>euch <span class="tr">(вам)</span></td><td>euer <span class="tr">(вас)</span></td></tr>
+        <tr><td><strong>sie/Sie</strong> <span class="tr">(они/Вы)</span></td><td>sie/Sie</td><td>sie / Sie <span class="tr">(их/Вас)</span></td><td>ihnen / Ihnen <span class="tr">(им/Вам)</span></td><td>ihrer / Ihrer <span class="tr">(их/Вас)</span></td></tr>
       </tbody>
     </table></div>
     <div class="alert alert-info">
@@ -1558,6 +1562,114 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
           </tbody>
         </table></div>
         <p style="font-size:11.5px;color:var(--muted-fg);margin-top:6px">Падеж = роль <strong>в придаточном</strong>.<br><em>Der Mann, <strong>den</strong> ich kenne…</em> <span class="tr">(Akk.)</span></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="card" id="dieser-ref">
+  <div class="card-header"><span class="badge badge-num">42</span><div class="card-title">dieser / jener / welcher <span class="de">(Demonstrativpronomen)</span></div></div>
+  <div class="card-content">
+    <div class="alert alert-info"><span class="alert-icon">💡</span><div class="alert-body"><p>Все три склоняются <strong>одинаково</strong> — сильное склонение (= окончания определённого артикля)</p></div></div>
+    <div class="tbl-wrap"><table>
+      <thead>
+        <tr>
+          <th></th>
+          <th class="gm">м.р.</th>
+          <th class="gn">с.р.</th>
+          <th class="gf">ж.р.</th>
+          <th>мн.ч.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nom.</td>
+          <td class="gm"><span class="tr-anchor" data-tip="dieser Kater / jener Kater / welcher Kater">dieser / jener / welcher</span></td>
+          <td class="gn"><span class="tr-anchor" data-tip="dieses Kätzchen / jenes Kätzchen / welches Kätzchen">dieses / jenes / welches</span></td>
+          <td class="gf"><span class="tr-anchor" data-tip="diese Katze / jene Katze / welche Katze">diese / jene / welche</span></td>
+          <td><span class="tr-anchor" data-tip="diese Katzen / jene Katzen / welche Katzen">diese / jene / welche</span></td>
+        </tr>
+        <tr>
+          <td>Gen.</td>
+          <td class="gm"><span class="tr-anchor" data-tip="dieses Katers / jenes Katers / welches Katers">dieses / jenes / welches</span></td>
+          <td class="gn"><span class="tr-anchor" data-tip="dieses Kätzchens / jenes Kätzchens / welches Kätzchens">dieses / jenes / welches</span></td>
+          <td class="gf"><span class="tr-anchor" data-tip="dieser Katze / jener Katze / welcher Katze">dieser / jener / welcher</span></td>
+          <td><span class="tr-anchor" data-tip="dieser Katzen / jener Katzen / welcher Katzen">dieser / jener / welcher</span></td>
+        </tr>
+        <tr>
+          <td>Dat.</td>
+          <td class="gm"><span class="tr-anchor" data-tip="diesem Kater / jenem Kater / welchem Kater">diesem / jenem / welchem</span></td>
+          <td class="gn"><span class="tr-anchor" data-tip="diesem Kätzchen / jenem Kätzchen / welchem Kätzchen">diesem / jenem / welchem</span></td>
+          <td class="gf"><span class="tr-anchor" data-tip="dieser Katze / jener Katze / welcher Katze">dieser / jener / welcher</span></td>
+          <td><span class="tr-anchor" data-tip="diesen Katzen / jenen Katzen / welchen Katzen">diesen / jenen / welchen</span></td>
+        </tr>
+        <tr>
+          <td>Akk.</td>
+          <td class="gm"><span class="tr-anchor" data-tip="diesen Kater / jenen Kater / welchen Kater">diesen / jenen / welchen</span></td>
+          <td class="gn"><span class="tr-anchor" data-tip="dieses Kätzchen / jenes Kätzchen / welches Kätzchen">dieses / jenes / welches</span></td>
+          <td class="gf"><span class="tr-anchor" data-tip="diese Katze / jene Katze / welche Katze">diese / jene / welche</span></td>
+          <td><span class="tr-anchor" data-tip="diese Katzen / jene Katzen / welche Katzen">diese / jene / welche</span></td>
+        </tr>
+      </tbody>
+    </table></div>
+    <p class="rule" style="margin-top:8px">
+      <strong>dieser</strong> <span class="tr">(этот)</span> — близкое &nbsp;·&nbsp;
+      <strong>jener</strong> <span class="tr">(тот)</span> — далёкое &nbsp;·&nbsp;
+      <strong>welcher</strong> <span class="tr">(который/какой)</span> — вопрос/определение
+    </p>
+  </div>
+</div>
+
+<div class="card" id="frage-ref">
+  <div class="card-header"><span class="badge badge-num">43</span><div class="card-title">Вопросительные местоимения <span class="de">(Fragepronomen)</span></div></div>
+  <div class="card-content">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+
+      <!-- wer / was -->
+      <div>
+        <div style="font-weight:600;font-size:12px;color:var(--muted-fg);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em">wer / was</div>
+        <div class="tbl-wrap"><table style="font-size:12.5px">
+          <thead><tr><th></th><th><span class="tr-anchor" data-tip="О людях&#10;Wer ist das?">wer</span> <span class="tr">(кто)</span></th><th><span class="tr-anchor" data-tip="О вещах / идеях&#10;Was ist das?">was</span> <span class="tr">(что)</span></th></tr></thead>
+          <tbody>
+            <tr><td>Nom.</td><td><strong>wer</strong></td><td><strong>was</strong></td></tr>
+            <tr><td>Gen.</td>
+              <td><span class="tr-anchor" data-tip="Wessen Buch ist das? (Чья это книга?)"><strong>wessen</strong></span> <span class="tr">(чей)</span></td>
+              <td><span class="tr-anchor" data-tip="Используется редко"><strong>wessen</strong></span></td>
+            </tr>
+            <tr><td>Dat.</td>
+              <td><span class="tr-anchor" data-tip="Wem gibst du das? (Кому ты это даёшь?)"><strong>wem</strong></span> <span class="tr">(кому)</span></td>
+              <td style="color:var(--muted-fg);font-size:11.5px">— (не исп.)</td>
+            </tr>
+            <tr><td>Akk.</td>
+              <td><span class="tr-anchor" data-tip="Wen siehst du? (Кого ты видишь?)"><strong>wen</strong></span> <span class="tr">(кого)</span></td>
+              <td><strong>was</strong></td>
+            </tr>
+          </tbody>
+        </table></div>
+        <p style="font-size:11.5px;color:var(--muted-fg);margin-top:6px">
+          <em>Wer kommt?</em> <span class="tr">(Кто придёт?)</span><br>
+          <em>Wem hilfst du?</em> <span class="tr">(Кому помогаешь?)</span><br>
+          <em>Wen liebst du?</em> <span class="tr">(Кого любишь?)</span>
+        </p>
+      </div>
+
+      <!-- welcher -->
+      <div>
+        <div style="font-weight:600;font-size:12px;color:var(--muted-fg);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em">welcher / welches / welche <span class="tr">(какой)</span></div>
+        <div class="tbl-wrap"><table style="font-size:12.5px">
+          <thead><tr><th></th><th class="gm">м.р.</th><th class="gn">с.р.</th><th class="gf">ж.р.</th><th>мн.ч.</th></tr></thead>
+          <tbody>
+            <tr><td>Nom.</td><td class="gm">welcher</td><td class="gn">welches</td><td class="gf">welche</td><td>welche</td></tr>
+            <tr><td>Gen.</td><td class="gm">welches</td><td class="gn">welches</td><td class="gf">welcher</td><td>welcher</td></tr>
+            <tr><td>Dat.</td><td class="gm">welchem</td><td class="gn">welchem</td><td class="gf">welcher</td><td class="hl">welchen</td></tr>
+            <tr><td>Akk.</td><td class="gm">welchen</td><td class="gn">welches</td><td class="gf">welche</td><td>welche</td></tr>
+          </tbody>
+        </table></div>
+        <p style="font-size:11.5px;color:var(--muted-fg);margin-top:6px">
+          <em>Welcher Film gefällt dir?</em> <span class="tr">(Какой фильм нравится?)</span><br>
+          <em>Mit welchem Bus fährst du?</em> <span class="tr">(На каком автобусе?)</span>
+        </p>
       </div>
 
     </div>
@@ -2995,7 +3107,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
 </div>
 
 <div id="search-noresult">Ничего не найдено 🔍</div>
-<footer>41 тем · Goethe / TELC B1 · Viel Erfolg! 🇩🇪</footer>
+<footer>43 тем · Goethe / TELC B1 · Viel Erfolg! 🇩🇪</footer>
 </main>
 </div>
 
