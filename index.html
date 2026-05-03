@@ -26,6 +26,11 @@
   --ring:              oklch(0.705 0.015 286.067);
   --destructive:       oklch(0.577 0.245 27.325);
   --radius:            0.625rem;
+  --ease-out:          cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-in-out:       cubic-bezier(0.645, 0.045, 0.355, 1);
+  --motion-fast:       120ms;
+  --motion-ui:         180ms;
+  --motion-panel:      240ms;
 }
 
 [data-theme="dark"] {
@@ -122,7 +127,7 @@ aside {
   display: flex;
   flex-direction: column;
   font-size: 12.5px;
-  transition: width .25s cubic-bezier(.4,0,.2,1), min-width .25s cubic-bezier(.4,0,.2,1), padding .25s, border-width .25s;
+  transition: width var(--motion-panel) var(--ease-in-out), min-width var(--motion-panel) var(--ease-in-out), padding var(--motion-panel) var(--ease-in-out), border-width var(--motion-panel) var(--ease-in-out);
 }
 .sidebar-scroll {
   flex: 1;
@@ -155,7 +160,7 @@ aside ul li a {
   color: var(--muted-fg);
   text-decoration: none;
   border-radius: 0;
-  transition: color .15s, background .15s;
+  transition: color var(--motion-fast) ease, background-color var(--motion-fast) ease;
   font-size: 12.5px;
   white-space: nowrap;
   overflow: hidden;
@@ -251,7 +256,7 @@ main {
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: all .15s;
+  transition: background-color var(--motion-fast) ease, color var(--motion-fast) ease, border-color var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out);
   white-space: nowrap;
   outline: none;
   padding: 6px 14px;
@@ -265,6 +270,7 @@ main {
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05);
 }
 .btn-outline:hover { background: var(--accent); color: var(--accent-fg); }
+.btn:active { transform: scale(0.98); }
 .btn-secondary {
   background: var(--secondary);
   color: var(--secondary-fg);
@@ -300,6 +306,9 @@ main {
   overflow: hidden;
   scroll-margin-top: 24px;
 }
+.card:target {
+  animation: target-focus 900ms var(--ease-out);
+}
 .card-header {
   padding: 20px 22px 14px;
   border-bottom: 1px solid var(--border);
@@ -321,6 +330,59 @@ main {
 }
 .card-content { padding: 18px 22px; }
 .card-content > * + * { margin-top: 14px; }
+
+/* ── Learning map ── */
+.learning-map {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.learning-step {
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 92px;
+  transition: background-color var(--motion-fast) ease, border-color var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .learning-step:hover { transform: translateY(-1px); border-color: var(--ring); }
+}
+.learning-step-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted-fg);
+  margin-bottom: 6px;
+}
+.learning-step-main {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--foreground);
+  line-height: 1.35;
+}
+.learning-step-example {
+  margin-top: 7px;
+  color: var(--muted-fg);
+  font-size: 12px;
+  line-height: 1.4;
+}
+.route-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.route-list a {
+  text-decoration: none;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  background: var(--background);
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 12px;
+}
+.route-list a:hover { background: var(--accent); }
 
 /* ── Shadcn Table ── */
 .tbl-wrap { overflow-x: auto; }
@@ -512,13 +574,15 @@ hr.sep { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
   box-shadow: 0 2px 10px rgb(0 0 0 / .22);
   pointer-events: none;
   opacity: 0;
-  transition: opacity .12s;
+  transform: translateY(3px) scale(0.98);
+  transform-origin: center bottom;
+  transition: opacity var(--motion-fast) var(--ease-out), transform var(--motion-fast) var(--ease-out);
   max-width: 210px;
   white-space: pre-line;
   text-align: left;
   line-height: 1.6;
 }
-#global-tip.tip-visible { opacity: 1; }
+#global-tip.tip-visible { opacity: 1; transform: translateY(0) scale(1); }
 
 /* ── Emphasis colors ── */
 .hl { color: oklch(0.53 0.2 27); font-weight: 700; }
@@ -564,8 +628,10 @@ footer {
   color: var(--muted-fg);
   border-radius: 4px;
   display: flex; align-items: center; justify-content: center;
+  transition: background-color var(--motion-fast) ease, color var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out);
 }
 .sidebar-close-btn:hover { background: var(--accent); color: var(--foreground); }
+.sidebar-close-btn:active { transform: scale(0.94); }
 
 /* ── Sidebar controls (bottom) ── */
 .sidebar-controls {
@@ -586,11 +652,12 @@ footer {
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   color: var(--muted-fg);
-  transition: background .15s, color .15s;
+  transition: background-color var(--motion-fast) ease, color var(--motion-fast) ease, border-color var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out);
   font-family: inherit;
 }
 .sc-btn:hover { background: var(--accent); color: var(--foreground); }
 .sc-btn.sc-active { background: var(--foreground); color: var(--background); border-color: var(--foreground); }
+.sc-btn:active { transform: scale(0.96); }
 
 /* ── Sidebar-open button (in page header, desktop only) ── */
 .sidebar-open-btn {
@@ -602,10 +669,11 @@ footer {
   cursor: pointer;
   align-items: center; justify-content: center;
   color: var(--muted-fg);
-  transition: background .15s, color .15s;
+  transition: background-color var(--motion-fast) ease, color var(--motion-fast) ease, border-color var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out);
   flex-shrink: 0;
 }
 .sidebar-open-btn:hover { background: var(--accent); color: var(--foreground); }
+.sidebar-open-btn:active { transform: scale(0.96); }
 body.sidebar-hidden .sidebar-open-btn { display: flex; }
 @media (max-width: 680px) { .sidebar-open-btn { display: none !important; } }
 
@@ -620,8 +688,10 @@ body.sidebar-hidden .sidebar-open-btn { display: flex; }
   background: rgb(0 0 0 / .35);
   z-index: 99;
   backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity var(--motion-ui) var(--ease-out);
 }
-.nav-overlay.open { display: block; }
+.nav-overlay.open { display: block; opacity: 1; }
 
 /* ── Fullpage overlay (Irregular verbs) ── */
 body.fullpage-open { overflow: hidden; }
@@ -633,6 +703,7 @@ body.fullpage-open { overflow: hidden; }
   color: var(--foreground);
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  animation: fullpage-enter var(--motion-panel) var(--ease-out);
 }
 .fullpage[hidden] { display: none !important; }
 .fullpage-inner {
@@ -703,15 +774,16 @@ body.fullpage-open { overflow: hidden; }
   aside {
     position: fixed;
     top: 0;
-    left: -260px;
+    left: 0;
     width: 260px;
     height: 100vh;
     z-index: 100;
-    transition: left .25s cubic-bezier(.4,0,.2,1);
+    transform: translateX(-100%);
+    transition: transform var(--motion-panel) var(--ease-out);
     box-shadow: none;
   }
   aside.open {
-    left: 0;
+    transform: translateX(0);
     box-shadow: 8px 0 32px rgb(0 0 0 / .12);
   }
   .close-nav { display: flex; align-items: center; justify-content: center; }
@@ -732,6 +804,8 @@ td { padding: 7px 8px; }
 .card-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
 .card-2col > .card { margin-bottom: 0; }
 @media (max-width: 760px) { .card-2col { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .learning-map { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .learning-map { grid-template-columns: 1fr; } }
 
 /* ── Präteritum 2-col table ── */
 .tbl-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -765,7 +839,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-root > li > details > summary.nav-sep::-webkit-details-marker { display: none; }
-.nav-root > li > details > summary.nav-sep::after { content: '▾'; font-size: 9px; opacity: .55; transition: transform .15s; }
+.nav-root > li > details > summary.nav-sep::after { content: '▾'; font-size: 9px; opacity: .55; transition: transform var(--motion-ui) var(--ease-in-out); }
 .nav-root > li > details:not([open]) > summary.nav-sep::after { transform: rotate(-90deg); }
 .nav-root > li > details > summary.nav-sep:hover { color: var(--foreground); }
 .nav-sub { list-style: none; padding: 0; }
@@ -809,11 +883,12 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   color: var(--muted-fg);
-  transition: background .15s, color .15s, border-color .15s;
+  transition: background-color var(--motion-fast) ease, color var(--motion-fast) ease, border-color var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out);
   font-family: inherit;
 }
 .mhdr-btn:hover     { background: var(--accent); color: var(--foreground); }
 .mhdr-btn.m-active  { background: var(--foreground); color: var(--background); border-color: var(--foreground); }
+.mhdr-btn:active    { transform: scale(0.96); }
 
 /* ── mobile responsive overrides ── */
 @media (max-width: 680px) {
@@ -941,7 +1016,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   height: 3px; width: 0%;
   background: oklch(0.58 0.22 250);
   z-index: 300; border-radius: 0 2px 2px 0;
-  pointer-events: none; transition: width .08s linear;
+  pointer-events: none; transition: width 80ms linear;
 }
 [data-theme="dark"] #progress-bar { background: oklch(0.70 0.14 250); }
 
@@ -952,11 +1027,12 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   border: 1px solid var(--border); background: var(--card);
   color: var(--muted-fg); cursor: pointer;
   opacity: 0; pointer-events: none;
-  transition: opacity .2s, transform .15s;
+  transform: translateY(8px) scale(0.98);
+  transition: opacity var(--motion-ui) var(--ease-out), transform var(--motion-ui) var(--ease-out), background-color var(--motion-fast) ease, color var(--motion-fast) ease;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 2px 10px rgb(0 0 0 / .12); z-index: 150; font-family: inherit;
 }
-#back-top.show { opacity: 1; pointer-events: auto; }
+#back-top.show { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
 #back-top:hover { color: var(--foreground); transform: translateY(-2px); }
 
 /* ══ Search ══ */
@@ -966,7 +1042,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   border: 1px solid var(--border); border-radius: var(--radius);
   background: var(--background); color: var(--foreground);
   font-family: inherit; font-size: 12.5px;
-  padding: 0 10px 0 30px; outline: none; transition: border-color .15s;
+  padding: 0 10px 0 30px; outline: none; transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
 }
 .search-input:focus { border-color: oklch(0.55 0.14 250); }
 .search-input::placeholder { color: var(--muted-fg); }
@@ -1045,12 +1121,32 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   font-family: inherit; border: none; background: transparent;
   color: var(--muted-fg); cursor: pointer;
   border-bottom: 2px solid transparent; margin-bottom: -1px;
-  transition: color .15s, border-color .15s; white-space: nowrap; flex-shrink: 0;
+  transition: color var(--motion-fast) ease, border-color var(--motion-fast) ease; white-space: nowrap; flex-shrink: 0;
 }
 .tab-btn:hover { color: var(--foreground); }
 .tab-btn.tab-active { color: var(--foreground); border-bottom-color: var(--foreground); }
 .tab-panel { display: none; }
 .tab-panel.tab-active { display: block; }
+
+@keyframes fullpage-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes target-focus {
+  0%   { box-shadow: 0 0 0 0 oklch(0.55 0.14 250 / .32); border-color: var(--ring); }
+  100% { box-shadow: 0 1px 3px 0 rgb(0 0 0 / .04), 0 1px 2px -1px rgb(0 0 0 / .04); border-color: var(--border); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none;
+    transition: none;
+    scroll-behavior: auto;
+  }
+}
 
 /* ══ Coloured sentence roles ══ */
 .ex-s { color: oklch(0.38 0.14 250); font-weight: 600; }
@@ -1077,7 +1173,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   </button>
   <div class="search-wrap" style="max-width:130px;margin-left:4px">
     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="search" class="search-input" placeholder="Поиск…" oninput="doSearch(this.value)" style="font-size:12px">
+    <input type="search" class="search-input" aria-label="Поиск по темам" placeholder="Поиск…" oninput="doSearch(this.value)" style="font-size:12px">
   </div>
 </header>
 
@@ -1093,67 +1189,66 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
     </button>
   </div>
   <ul class="nav-root">
-  <li><details open><summary class="nav-sep">Артикли и мест.</summary><ul class="nav-sub">
-    <li><a href="#s1">1 · Артикли и род</a></li>
-    <li><a href="#s2">2 · Личн. мест.</a></li>
-    <li><a href="#s3">3 · Притяжат. мест.</a></li>
-    <li><a href="#pronomen-ref">40 · Все мест. обзор</a></li>
-    <li><a href="#dieser-ref">42 · dieser / welcher</a></li>
-    <li><a href="#frage-ref">43 · Fragepronomen</a></li>
+  <li><details open><summary class="nav-sep">Маршрут</summary><ul class="nav-sub">
+    <li><a href="#system-map">Карта системы</a></li>
   </ul></details></li>
-  <li><details open><summary class="nav-sep">Падежи</summary><ul class="nav-sub">
-    <li><a href="#s4">4 · Nom. &amp; Akk.</a></li>
-    <li><a href="#s5">5 · Dativ</a></li>
-    <li><a href="#s6">6 · Genitiv</a></li>
-    <li><a href="#s7">7 · Wechselpräp.</a></li>
+  <li><details open><summary class="nav-sep">Окончания и падежи</summary><ul class="nav-sub">
+    <li><a href="#s1">Род и артикли</a></li>
+    <li><a href="#s4-summary">Карта падежей</a></li>
+    <li><a href="#s4">Nominativ / Akkusativ</a></li>
+    <li><a href="#s5">Dativ</a></li>
+    <li><a href="#s6">Genitiv</a></li>
+    <li><a href="#s3">Притяжательные</a></li>
+    <li><a href="#dieser-ref">dieser / welcher</a></li>
+    <li><a href="#s8">Склонение прилагательных</a></li>
   </ul></details></li>
-  <li><details open><summary class="nav-sep">Склонение</summary><ul class="nav-sub">
-    <li><a href="#s8">8 · Склон. прилаг.</a></li>
+  <li><details open><summary class="nav-sep">Местоимения</summary><ul class="nav-sub">
+    <li><a href="#s2">Личные местоимения</a></li>
+    <li><a href="#pronomen-ref">Все местоимения</a></li>
+    <li><a href="#frage-ref">Вопросительные</a></li>
   </ul></details></li>
-  <li><details open><summary class="nav-sep">Времена</summary><ul class="nav-sub">
-    <li><a href="#s-zeitachse">9 · Zeitachse</a></li>
-    <li><a href="#s9">10 · Präsens</a></li>
-    <li><a href="#s10">11 · Perfekt</a></li>
-    <li><a href="#s11">12 · Präteritum</a></li>
-    <li><a href="#s12">13 · Plusquamperfekt</a></li>
-    <li><a href="#s13">14 · Futur I</a></li>
+  <li><details open><summary class="nav-sep">Предлоги</summary><ul class="nav-sub">
+    <li><a href="#s7">Wechselpräpositionen</a></li>
+    <li><a href="#quick">Предлоги по падежам</a></li>
+    <li><a href="#s28">da- / wo- формы</a></li>
   </ul></details></li>
-  <li><details open><summary class="nav-sep">Наклонения</summary><ul class="nav-sub">
-    <li><a href="#s14">15 · Imperativ</a></li>
-    <li><a href="#s15">16 · Konjunktiv II</a></li>
-    <li><a href="#s16">17 · Konj. II прошл.</a></li>
-    <li><a href="#s17">18 · Passiv</a></li>
-    <li><a href="#s29">19 · Indir. Rede</a></li>
+  <li><details open><summary class="nav-sep">Глагол</summary><ul class="nav-sub">
+    <li><a href="#s-zeitachse">Карта времён</a></li>
+    <li><a href="#s9">Präsens</a></li>
+    <li><a href="#s10">Perfekt</a></li>
+    <li><a href="#s11">Präteritum</a></li>
+    <li><a href="#s12">Plusquamperfekt</a></li>
+    <li><a href="#s13">Futur I</a></li>
+    <li><a href="#s18">Modalverben</a></li>
+    <li><a href="#s19">Trennbare Verben</a></li>
+    <li><a href="#s20">Reflexive Verben</a></li>
+    <li><a href="#s21">Infinitiv + zu</a></li>
+    <li><a href="#s30">lassen</a></li>
+    <li><a href="#s31">Verb + Präposition</a></li>
+    <li><a href="#irregular">Неправильные глаголы</a></li>
   </ul></details></li>
-  <li><details open><summary class="nav-sep">Глаголы</summary><ul class="nav-sub">
-    <li><a href="#s18">20 · Modalverben</a></li>
-    <li><a href="#s19">21 · Trennb. Vb.</a></li>
-    <li><a href="#s20">22 · Reflexive Vb.</a></li>
-    <li><a href="#s21">23 · Infinitiv + zu</a></li>
-    <li><a href="#s30">24 · Verb lassen</a></li>
-    <li><a href="#s31">25 · Vb + Präp.</a></li>
+  <li><details open><summary class="nav-sep">Предложение</summary><ul class="nav-sub">
+    <li><a href="#s22">Порядок слов</a></li>
+    <li><a href="#s23">Nebensätze</a></li>
+    <li><a href="#s24">Relativsätze</a></li>
+    <li><a href="#s25">Двойные союзы</a></li>
+    <li><a href="#s32">Konditionalsätze</a></li>
+    <li><a href="#s26">Отрицание</a></li>
+    <li><a href="#s29">Indirekte Rede</a></li>
+    <li><a href="#s17">Passiv</a></li>
   </ul></details></li>
-  <li><details open><summary class="nav-sep">Предложения</summary><ul class="nav-sub">
-    <li><a href="#s22">26 · Порядок слов</a></li>
-    <li><a href="#s23">27 · Nebensätze</a></li>
-    <li><a href="#s24">28 · Relativsätze</a></li>
-    <li><a href="#s25">29 · Двойн. союзы</a></li>
-    <li><a href="#s32">30 · Konditionalsätze</a></li>
-  </ul></details></li>
-  <li><details open><summary class="nav-sep">Прочее</summary><ul class="nav-sub">
-    <li><a href="#s26">31 · Отрицание</a></li>
-    <li><a href="#s27">32 · Komparativ</a></li>
-    <li><a href="#s28">33 · da-/wo-</a></li>
-    <li><a href="#s33">34 · Partizipien</a></li>
-    <li><a href="#s34">35 · Nominalisierung</a></li>
-    <li><a href="#s35">36 · Ordinalzahlen</a></li>
-    <li><a href="#zahlen">41 · Kardinalzahlen</a></li>
+  <li><details open><summary class="nav-sep">Формы и стиль</summary><ul class="nav-sub">
+    <li><a href="#s14">Imperativ</a></li>
+    <li><a href="#s15">Konjunktiv II</a></li>
+    <li><a href="#s16">Konjunktiv II Vergangenheit</a></li>
+    <li><a href="#s27">Komparativ</a></li>
+    <li><a href="#s33">Partizipien</a></li>
+    <li><a href="#s34">Nominalisierung</a></li>
   </ul></details></li>
   <li><details open><summary class="nav-sep">Справочник</summary><ul class="nav-sub">
-    <li><a href="#quick">37 · Предлоги</a></li>
-    <li><a href="#quick2">38 · Союзы</a></li>
-    <li><a href="#briefe">39 · Briefe</a></li>
-    <li><a href="#irregular">Неправильные глаголы · B1 топ‑100</a></li>
+    <li><a href="#zahlen">Числа</a></li>
+    <li><a href="#quick2">Союзы</a></li>
+    <li><a href="#briefe">Briefe</a></li>
   </ul></details></li>
 </ul>
 </div><!-- /.sidebar-scroll -->
@@ -1184,7 +1279,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
     <div class="fp-tools">
       <div class="search-wrap" style="max-width:520px">
         <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input id="irregularSearch" type="search" class="search-input" placeholder="Поиск: gehen / ging / gegangen…" oninput="filterIrregular(this.value)">
+        <input id="irregularSearch" type="search" class="search-input" aria-label="Поиск по неправильным глаголам" placeholder="Поиск: gehen / ging / gegangen…" oninput="filterIrregular(this.value)">
       </div>
       <div class="fp-count" id="irregularCount"></div>
     </div>
@@ -1212,13 +1307,50 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   <span class="page-title">Немецкий · Шпаргалки</span>
   <div class="search-wrap">
     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="search" class="search-input" placeholder="Поиск по теме…" oninput="doSearch(this.value)">
+    <input type="search" class="search-input" aria-label="Поиск по темам" placeholder="Поиск по теме…" oninput="doSearch(this.value)">
   </div>
 </header>
 
 
-<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Артикли и местоимения</span><div class="level-sep-line"></div></div>
+<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Окончания и падежи</span><div class="level-sep-line"></div></div>
 
+<div class="card" id="system-map">
+  <div class="card-header">
+    <span class="badge badge-num">0</span>
+    <div class="card-title">Карта системы <span class="de">(Genus → Kasus → Endung)</span></div>
+  </div>
+  <div class="card-content">
+    <div class="learning-map">
+      <div class="learning-step">
+        <div class="learning-step-title">1. Род</div>
+        <div class="learning-step-main">der / die / das / Plural</div>
+        <div class="learning-step-example">der Mann, die Frau, das Kind</div>
+      </div>
+      <div class="learning-step">
+        <div class="learning-step-title">2. Падеж</div>
+        <div class="learning-step-main">кто? кого? кому? чей?</div>
+        <div class="learning-step-example">Nom. → Akk. → Dat. → Gen.</div>
+      </div>
+      <div class="learning-step">
+        <div class="learning-step-title">3. Сигнал</div>
+        <div class="learning-step-main">артикль или местоимение</div>
+        <div class="learning-step-example">den Mann, meinem Vater</div>
+      </div>
+      <div class="learning-step">
+        <div class="learning-step-title">4. Окончание</div>
+        <div class="learning-step-main">прилагательное добирает форму</div>
+        <div class="learning-step-example">ein guter Mann, den guten Mann</div>
+      </div>
+    </div>
+    <div class="route-list" aria-label="Быстрый маршрут по системе окончаний">
+      <a href="#s1">Род</a>
+      <a href="#s4-summary">Падежи</a>
+      <a href="#s3">Притяжательные</a>
+      <a href="#dieser-ref">dieser / welcher</a>
+      <a href="#s8">Склонение прилагательных</a>
+    </div>
+  </div>
+</div>
 
 <div class="card" id="s1">
   <div class="card-header">
@@ -1676,7 +1808,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   </div>
 </div>
 
-<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Падежи</span><div class="level-sep-line"></div></div>
+<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Падежи: применение</span><div class="level-sep-line"></div></div>
 
 
 <div class="card" id="s4-summary">
@@ -1942,7 +2074,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
 </div>
 
 
-<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Склонение</span><div class="level-sep-line"></div></div>
+<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Окончания прилагательных</span><div class="level-sep-line"></div></div>
 
 
 <div class="card" id="s8">
@@ -1999,7 +2131,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
 </div>
 
 
-<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Времена</span><div class="level-sep-line"></div></div>
+<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Глагол: времена</span><div class="level-sep-line"></div></div>
 
 <div class="card" id="s-zeitachse">
   <div class="card-header"><span class="badge badge-num">9</span><div class="card-title">Ось времени <span class="de">(Zeitachse)</span></div></div>
@@ -2232,7 +2364,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
 </div>
 
 
-<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Наклонения и залог</span><div class="level-sep-line"></div></div>
+<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Формы глагола и залог</span><div class="level-sep-line"></div></div>
 
 
 <div class="card" id="s14">
@@ -2349,7 +2481,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
 </div>
 
 
-<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Глаголы</span><div class="level-sep-line"></div></div>
+<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Глагол: конструкции</span><div class="level-sep-line"></div></div>
 
 
 <div class="card" id="s18">
@@ -2561,7 +2693,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
 </div>
 
 
-<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Предложения и связи</span><div class="level-sep-line"></div></div>
+<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Предложение и связи</span><div class="level-sep-line"></div></div>
 
 
 <div class="card" id="s22">
@@ -2699,7 +2831,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
 </div>
 
 
-<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Прочее</span><div class="level-sep-line"></div></div>
+<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Формы и справочные модели</span><div class="level-sep-line"></div></div>
 
 
 <div class="card" id="s26">
@@ -3282,7 +3414,7 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
       if (localStorage.getItem('de_dark') === null) {
         if (e.matches) document.documentElement.setAttribute('data-theme', 'dark');
         else document.documentElement.removeAttribute('data-theme');
-        document.addEventListener('DOMContentLoaded', function() { _syncDarkBtn(e.matches); });
+        _syncDarkBtn(e.matches);
       }
     });
 
@@ -3716,16 +3848,6 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
     const panel = document.getElementById(panelId);
     if (panel) panel.classList.add('tab-active');
   }
-</script>
-
-<!-- Agentation toolbar (dev/test only) -->
-<div id="agentation-root"></div>
-<script type="module">
-  import React from 'https://esm.sh/react@19.2.4';
-  import { createRoot } from 'https://esm.sh/react-dom@19.2.4/client?deps=react@19.2.4';
-  import { Agentation } from 'https://esm.sh/agentation@2.3.2?deps=react@19.2.4,react-dom@19.2.4';
-  const root = createRoot(document.getElementById('agentation-root'));
-  root.render(React.createElement(Agentation));
 </script>
 </body>
 </html>
