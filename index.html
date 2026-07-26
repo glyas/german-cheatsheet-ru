@@ -99,7 +99,6 @@
 [data-theme="dark"] .alert-info .alert-title { color: oklch(0.88 0.12 237); }
 
 
-
 *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -813,7 +812,6 @@ td { padding: 7px 8px; }
 @media (max-width: 760px) { .tbl-2col { grid-template-columns: 1fr; } }
 
 
-
 /* ── Compact mode button ── */
 .btn-sm { height: 32px; font-size: 12px; padding: 4px 11px; }
 
@@ -1087,6 +1085,46 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
 .checklist-item.done .checklist-label { text-decoration: line-through; }
 .checklist-label { font-size: 13px; line-height: 1.45; }
 
+.nav-modes {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0 0 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.nav-modes-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted-fg);
+  margin-bottom: 2px;
+}
+.nav-mode {
+  display: block;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  color: var(--foreground);
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--motion-fast) ease, border-color var(--motion-fast) ease;
+}
+.nav-mode:hover {
+  background: var(--accent);
+  border-color: var(--ring);
+}
+.checklist-label a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.checklist-label a:hover { color: var(--foreground); }
+
 /* ══ Mnemonic chips ══ */
 .mnemonic { display: flex; gap: 4px; flex-wrap: wrap; margin: 6px 0 4px; }
 .mn-chip {
@@ -1219,97 +1257,71 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
     </button>
   </div>
   <ul class="nav-root">
-  <li><details open><summary class="nav-sep">Маршрут</summary><ul class="nav-sub">
+  <li class="nav-modes">
+    <div class="nav-modes-label">Режимы</div>
+    <a class="nav-mode" href="#system-map">Учить грамматику</a>
+    <a class="nav-mode" href="#exam-30">Перед экзаменом</a>
+    <a class="nav-mode" href="#checkliste">Повторить слабости</a>
+  </li>
+  <li><details open><summary class="nav-sep">Грамматика</summary><ul class="nav-sub">
     <li><a href="#system-map">Карта системы</a></li>
-  </ul></details></li>
-  <li><details open><summary class="nav-sep">Окончания и падежи</summary><ul class="nav-sub">
     <li><a href="#s1">Род и артикли</a></li>
     <li><a href="#s4-summary">Карта падежей</a></li>
     <li><a href="#s4">Nominativ / Akkusativ</a></li>
     <li><a href="#s5">Dativ</a></li>
     <li><a href="#s6">Genitiv</a></li>
     <li><a href="#n-deklination">n-Deklination</a></li>
-    <li><a href="#s3">Притяжательные</a></li>
-    <li><a href="#dieser-ref">dieser / welcher</a></li>
     <li><a href="#s8">Склонение прилагательных</a></li>
-  </ul></details></li>
-  <li><details open><summary class="nav-sep">Местоимения</summary><ul class="nav-sub">
     <li><a href="#s2">Личные местоимения</a></li>
     <li><a href="#pronomen-ref">Все местоимения</a></li>
-    <li><a href="#frage-ref">Вопросительные</a></li>
-  </ul></details></li>
-  <li><details open><summary class="nav-sep">Предлоги</summary><ul class="nav-sub">
     <li><a href="#s7">Wechselpräpositionen</a></li>
-    <li><a href="#quick">Предлоги по падежам</a></li>
-    <li><a href="#s28">da- / wo- формы</a></li>
-  </ul></details></li>
-  <li><details open><summary class="nav-sep">Глагол</summary><ul class="nav-sub">
     <li><a href="#s-zeitachse">Карта времён</a></li>
-    <li><a href="#s9">Präsens</a></li>
     <li><a href="#s10">Perfekt</a></li>
-    <li><a href="#s11">Präteritum</a></li>
-    <li><a href="#s12">Plusquamperfekt</a></li>
-    <li><a href="#s13">Futur I</a></li>
     <li><a href="#s18">Modalverben</a></li>
     <li><a href="#modal-perfekt">Modal im Perfekt</a></li>
-    <li><a href="#s19">Trennbare Verben</a></li>
-    <li><a href="#s20">Reflexive Verben</a></li>
-    <li><a href="#s21">Infinitiv + zu</a></li>
-    <li><a href="#s30">lassen</a></li>
-    <li><a href="#s31">Verb + Präposition</a></li>
-    <li><a href="#nv-adj">Nomen-Verb / Adj+Präp</a></li>
-    <li><a href="#irregular">Неправильные глаголы</a></li>
-  </ul></details></li>
-  <li><details open><summary class="nav-sep">Предложение</summary><ul class="nav-sub">
     <li><a href="#s22">Порядок слов</a></li>
     <li><a href="#s23">Nebensätze</a></li>
     <li><a href="#temporal">Temporalsätze</a></li>
-    <li><a href="#s24">Relativsätze</a></li>
-    <li><a href="#s25">Двойные союзы</a></li>
-    <li><a href="#s32">Konditionalsätze</a></li>
-    <li><a href="#s26">Отрицание</a></li>
-    <li><a href="#s29">Indirekte Rede</a></li>
-    <li><a href="#s17">Passiv</a></li>
-  </ul></details></li>
-  <li><details open><summary class="nav-sep">Формы и стиль</summary><ul class="nav-sub">
-    <li><a href="#s14">Imperativ</a></li>
     <li><a href="#s15">Konjunktiv II</a></li>
-    <li><a href="#s16">Konjunktiv II Vergangenheit</a></li>
-    <li><a href="#s27">Komparativ</a></li>
-    <li><a href="#s33">Partizipien</a></li>
-    <li><a href="#s34">Nominalisierung</a></li>
+    <li><a href="#s17">Passiv</a></li>
+    <li><a href="#irregular">Неправильные глаголы</a></li>
   </ul></details></li>
-  <li><details open><summary class="nav-sep">Справочник</summary><ul class="nav-sub">
+  <li><details><summary class="nav-sep">Справочник</summary><ul class="nav-sub">
     <li><a href="#zahlen">Числа</a></li>
     <li><a href="#uhrzeit-datum">Uhrzeit / Datum</a></li>
     <li><a href="#wortbildung">Wortbildung</a></li>
+    <li><a href="#quick">Предлоги по падежам</a></li>
     <li><a href="#quick2">Союзы</a></li>
-    <li><a href="#briefe">Briefe</a></li>
+    <li><a href="#s31">Verb + Präposition</a></li>
+    <li><a href="#nv-adj">Nomen-Verb / Adj+Präp</a></li>
+    <li><a href="#s28">da- / wo- формы</a></li>
   </ul></details></li>
-  <li><details open><summary class="nav-sep">Повторение</summary><ul class="nav-sub">
+  <li><details><summary class="nav-sep">TELC B1</summary><ul class="nav-sub">
+    <li><a href="#exam-30">30 мин до экзамена</a></li>
+    <li><a href="#telc-overview">Übersicht</a></li>
     <li><a href="#wortschatz">Themenwortschatz</a></li>
+    <li><a href="#briefe">Briefe</a></li>
     <li><a href="#musterbriefe">Musterbriefe</a></li>
     <li><a href="#reden-schreiben">Redemittel Schreiben</a></li>
     <li><a href="#konj2-hoeflich">Вежливый Konj. II</a></li>
-    <li><a href="#bausteine-fallen">Ловушки Bausteine</a></li>
-    <li><a href="#bewertung">Критерии оценки</a></li>
-  </ul></details></li>
-  <li><details open><summary class="nav-sep">Практика</summary><ul class="nav-sub">
-    <li><a href="#checkliste">B1 Checkliste</a></li>
-    <li><a href="#fehler">Типичные ошибки</a></li>
-  </ul></details></li>
-  <li><details open><summary class="nav-sep">TELC B1</summary><ul class="nav-sub">
-    <li><a href="#telc-overview">Übersicht</a></li>
     <li><a href="#telc-lesen">Leseverstehen</a></li>
     <li><a href="#telc-hoeren">Hörverstehen</a></li>
     <li><a href="#telc-bausteine">Sprachbausteine</a></li>
-    <li><a href="#telc-reden">Redemittel</a></li>
+    <li><a href="#bausteine-fallen">Ловушки Bausteine</a></li>
+    <li><a href="#telc-reden">Redemittel Sprechen</a></li>
     <li><a href="#telc-s1-kennen">Sprechen 1a</a></li>
     <li><a href="#telc-s1-praes">Sprechen 1b</a></li>
     <li><a href="#telc-s2">Sprechen 2</a></li>
     <li><a href="#telc-s3">Sprechen 3</a></li>
+    <li><a href="#bewertung">Критерии оценки</a></li>
     <li><a href="#telc-tipps">Tipps</a></li>
     <li><a href="#telc-format">Format &amp; Audit</a></li>
+  </ul></details></li>
+  <li><details><summary class="nav-sep">Повторение</summary><ul class="nav-sub">
+    <li><a href="#checkliste">B1 Checkliste</a></li>
+    <li><a href="#fehler">Типичные ошибки</a></li>
+    <li><a href="#bausteine-fallen">Ловушки Bausteine</a></li>
+    <li><a href="#exam-30">Маршрут 30 мин</a></li>
   </ul></details></li>
 </ul>
 </div><!-- /.sidebar-scroll -->
@@ -1407,13 +1419,10 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
       <a href="#s1">Род</a>
       <a href="#s4-summary">Падежи</a>
       <a href="#n-deklination">n-Dekl.</a>
-      <a href="#s3">Притяжательные</a>
-      <a href="#dieser-ref">dieser / welcher</a>
-      <a href="#s8">Склонение прилагательных</a>
-      <a href="#wortschatz">Wortschatz</a>
-      <a href="#musterbriefe">Briefe</a>
-      <a href="#checkliste">Checkliste</a>
-      <a href="#telc-overview">TELC</a>
+      <a href="#s8">Прилагательные</a>
+      <a href="#s-zeitachse">Времена</a>
+      <a href="#s22">Порядок слов</a>
+      <a href="#exam-30">Перед экзаменом</a>
     </div>
   </div>
 </div>
@@ -3336,106 +3345,99 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   </div>
 </div>
 
-<div class="card" id="briefe">
-  <div class="card-header"><span class="badge badge-num">39</span><div class="card-title">Briefe schreiben <span class="tr">(написание писем)</span></div></div>
+
+<div class="card" id="uhrzeit-datum">
+  <div class="card-header"><span class="badge badge-num">65</span><div class="card-title">Uhrzeit, Datum, Termine <span class="de">(время и даты)</span></div></div>
   <div class="card-content">
     <div class="tbl-wrap"><table>
-      <thead><tr>
-        <th></th>
-        <th>Informeller Brief <span class="tr">(неофиц.)</span></th>
-        <th>Formeller Brief <span class="tr">(официальный)</span></th>
-      </tr></thead>
+      <thead><tr><th>Тема</th><th>Примеры</th></tr></thead>
       <tbody>
-        <tr>
-          <td style="font-weight:600;color:var(--muted-fg);white-space:nowrap;font-size:11px">Anrede <span class="tr">(привет.)</span></td>
-          <td>
-            Lieber Franz, <span class="tr">(дорогой)</span><br>
-            Liebe Katja, <span class="tr">(дорогая)</span><br>
-            Liebe Franz und Katja,
-          </td>
-          <td>
-            Sehr geehrte Damen und Herren, <span class="tr">(уважаемые дамы и господа)</span><br>
-            Sehr geehrte Frau …, <span class="tr">(уважаемая госпожа)</span><br>
-            Sehr geehrter Herr …, <span class="tr">(уважаемый господин)</span>
-          </td>
-        </tr>
-        <tr>
-          <td style="font-weight:600;color:var(--muted-fg);white-space:nowrap;font-size:11px">Mittelteil <span class="tr">(осн. часть)</span></td>
-          <td>
-            vielen Dank für deinen Brief. <span class="tr">(спасибо за письмо)</span><br>
-            Es geht mir gut. <span class="tr">(у меня всё хорошо)</span><br>
-            Es gibt (nicht) viel Neues. <span class="tr">(есть/нет новостей)</span><br>
-            Sag mir bitte, … <span class="tr">(скажи мне пожалуйста)</span><br>
-            Ich möchte auch … <span class="tr">(я бы ещё хотел...)</span>
-          </td>
-          <td>
-            Ich heiße … und komme aus … <span class="tr">(меня зовут … из …)</span><br>
-            Ich möchte … <span class="tr">(я хотел бы…)</span><br>
-            Bitte geben Sie mir folgende Information: <span class="tr">(сообщите, пожалуйста)</span><br>
-            Ich möchte auch wissen, … <span class="tr">(я также хотел бы узнать)</span><br>
-            Sagen Sie auch, … <span class="tr">(скажите также)</span>
-          </td>
-        </tr>
-        <tr>
-          <td style="font-weight:600;color:var(--muted-fg);white-space:nowrap;font-size:11px">Schluss <span class="tr">(завершение)</span></td>
-          <td>
-            Ich hoffe, wir sehen uns bald. <span class="tr">(надеюсь скоро увидимся)</span><br>
-            Melde dich! <span class="tr">(дай о себе знать!)</span><br>
-            Beste / Liebe Grüße, <span class="tr">(с уважением / с любовью)</span><br>
-            Deine / Dein … <span class="tr">(твоя / твой …)</span>
-          </td>
-          <td>
-            Vielen Dank für Ihre Bemühungen. <span class="tr">(спасибо за ваши усилия)</span><br>
-            Vielen Dank im Voraus. <span class="tr">(заранее благодарю)</span><br>
-            Mit freundlichen Grüßen, <span class="tr">(с уважением)</span><br>
-            Vorname Name <span class="tr">(имя фамилия)</span>
-          </td>
-        </tr>
+        <tr><td><strong>Uhrzeit</strong></td><td><em>um 8 Uhr / um halb neun (8:30) / um Viertel nach zehn (10:15) / um Viertel vor drei (14:45)</em></td></tr>
+        <tr><td><strong>24h vs 12h</strong></td><td><em>14 Uhr = zwei Uhr nachmittags · 20 Uhr = acht Uhr abends</em></td></tr>
+        <tr><td><strong>Datum</strong></td><td><em>am 15. Mai / am Montag, dem 3. Juni / vom 1. bis zum 5. Juli</em></td></tr>
+        <tr><td><strong>Termine</strong></td><td><em>einen Termin vereinbaren / verschieben / absagen · passt dir 17 Uhr?</em></td></tr>
+        <tr><td><strong>Dauer</strong></td><td><em>eine Stunde / zwei Tage / seit drei Wochen / für ein Jahr</em></td></tr>
       </tbody>
     </table></div>
-
-    <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
-      <div class="detail-block" style="border:1px solid var(--border);border-radius:var(--radius);padding:12px">
-        <div style="font-weight:600;margin-bottom:8px">Einladung <span class="tr">(приглашение)</span></div>
-        Ich lade dich zu meinem Geburtstag ein. <span class="tr">(приглашаю на день рождения)</span><br>
-        Bitte komm am … um … Uhr. <span class="tr">(приходи в … в … часов)</span><br>
-        Bring bitte … mit. <span class="tr">(принеси, пожалуйста, …)</span><br>
-        <br>
-        <em style="color:var(--muted-fg);font-size:12px">Ответ на приглашение:</em><br>
-        Vielen Dank für deine Einladung. <span class="tr">(спасибо за приглашение)</span><br>
-        Ich komme gerne. <span class="tr">(с удовольствием приду)</span><br>
-        Leider kann ich nicht kommen. <span class="tr">(к сожалению, не смогу)</span>
-      </div>
-      <div class="detail-block" style="border:1px solid var(--border);border-radius:var(--radius);padding:12px">
-        <div style="font-weight:600;margin-bottom:8px">Nützliche Phrasen <span class="tr">(полезные фразы)</span></div>
-        Ich schreibe dir, weil … <span class="tr">(пишу тебе, потому что…)</span><br>
-        Leider muss ich dir sagen, dass … <span class="tr">(к сожалению должен сказать)</span><br>
-        Ich freue mich auf deine Antwort. <span class="tr">(жду твоего ответа)</span><br>
-        Bitte antworte bald! <span class="tr">(ответь скорее!)</span><br>
-        Ich wünsche dir alles Gute. <span class="tr">(желаю всего хорошего)</span><br>
-        Gute Besserung! <span class="tr">(скорейшего выздоровления!)</span><br>
-        Viel Erfolg! <span class="tr">(удачи!)</span>
-      </div>
-    </div>
-
-    <div class="alert alert-info" style="margin-top:16px"><span class="alert-icon">📝</span><div class="alert-body">
-      <p class="alert-title">TELC B1 Schreiben <span class="tr">(экзамен)</span></p>
-      <p><strong>Teil 1:</strong> формальное письмо (~80 слов) — жалоба, запрос, отмена, бронирование. <strong>Teil 2:</strong> неформальное (~40 слов) — ответ другу, приглашение.</p>
-      <p style="margin-top:6px">Структура: <strong>Anrede → Einleitung → Hauptteil (3 пункта задания!) → Schluss → Grußformel</strong>. Не забыть все пункты Aufgabe — за каждый пункт баллы.</p>
-    </div></div>
-    <div class="tbl-wrap" style="margin-top:10px"><table>
-      <thead><tr><th>Тип письма TELC</th><th>Ключевые фразы</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Beschwerde</strong> <span class="tr">(жалоба)</span></td><td><em>Leider muss ich mich beschweren… / Ich bin mit … nicht zufrieden.</em></td></tr>
-        <tr><td><strong>Anfrage</strong> <span class="tr">(запрос)</span></td><td><em>Ich interessiere mich für… / Könnten Sie mir bitte mitteilen…?</em></td></tr>
-        <tr><td><strong>Stornierung</strong> <span class="tr">(отмена)</span></td><td><em>Leider muss ich meine Buchung stornieren… / Bitte bestätigen Sie die Stornierung.</em></td></tr>
-        <tr><td><strong>Einladung</strong> <span class="tr">(приглашение)</span></td><td><em>Ich lade Sie herzlich ein… / Es würde mich freuen, wenn Sie kommen könnten.</em></td></tr>
-      </tbody>
-    </table></div>
+    <div class="alert alert-warn"><span class="alert-icon">⚠️</span><div class="alert-body"><p>Hören: записывай цифры сразу. <em>halb acht</em> = 7:30, не 8:30. <em>am</em> + дата, <em>um</em> + время.</p></div></div>
   </div>
 </div>
 
-<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Повторение перед TELC</span><div class="level-sep-line"></div></div>
+<div class="card" id="wortbildung">
+  <div class="card-header"><span class="badge badge-num">66</span><div class="card-title">Wortbildung <span class="de">(как угадывать слова)</span></div></div>
+  <div class="card-content">
+    <p class="rule" style="font-weight:600;margin-bottom:6px">Суффиксы существительных:</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Суффикс</th><th>Род / значение</th><th>Пример</th></tr></thead>
+      <tbody>
+        <tr><td><strong>-ung, -heit, -keit, -schaft, -tion</strong></td><td>обычно <span class="gf">die</span></td><td>Wohnung, Freiheit, Möglichkeit</td></tr>
+        <tr><td><strong>-er, -ling, -ismus</strong></td><td>обычно <span class="gm">der</span></td><td>Lehrer, Lehrling</td></tr>
+        <tr><td><strong>-chen, -lein, -ment, -um</strong></td><td>обычно <span class="gn">das</span></td><td>Mädchen, Dokument</td></tr>
+      </tbody>
+    </table></div>
+    <p class="rule" style="font-weight:600;margin:10px 0 6px">Приставки и суффиксы прилагательных/глаголов:</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Элемент</th><th>Значение</th><th>Пример</th></tr></thead>
+      <tbody>
+        <tr><td><strong>un-</strong></td><td>не-</td><td>unmöglich, unglücklich</td></tr>
+        <tr><td><strong>-bar</strong></td><td>-имый / можно</td><td>machbar, lesbar</td></tr>
+        <tr><td><strong>-los</strong></td><td>без-</td><td>arbeitslos, fehlerlos</td></tr>
+        <tr><td><strong>-voll</strong></td><td>полный</td><td>erfolgreich? → erfolgre<strong>ich</strong>; sinn<strong>voll</strong></td></tr>
+        <tr><td><strong>ver-, be-, er-</strong></td><td>часто меняют значение глагола</td><td>stehen → verstehen, suchen → besuchen</td></tr>
+        <tr><td><strong>-ieren</strong></td><td>глагол из иностранного слова</td><td>informieren, reservieren</td></tr>
+      </tbody>
+    </table></div>
+    <div class="alert alert-info"><span class="alert-icon">💡</span><div class="alert-body"><p>На Lesen/Sprachbausteine: не знаешь слово — смотри корень + приставку/суффикс. Часто хватает для смысла.</p></div></div>
+  </div>
+</div>
+
+
+<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">TELC B1</span><div class="level-sep-line"></div></div>
+
+
+<div class="card" id="exam-30">
+  <div class="card-header"><span class="badge badge-num">★</span><div class="card-title">30 минут до экзамена <span class="de">(быстрый маршрут)</span></div></div>
+  <div class="card-content">
+    <div class="alert alert-info"><span class="alert-icon">⏱️</span><div class="alert-body"><p>Не учи новое. Пройди по ссылкам сверху вниз — только must-know.</p></div></div>
+    <div class="route-list" aria-label="Маршрут 30 минут">
+      <a href="#telc-overview">1. Формат</a>
+      <a href="#bausteine-fallen">2. Ловушки</a>
+      <a href="#musterbriefe">3. Письма</a>
+      <a href="#reden-schreiben">4. Связки Schreiben</a>
+      <a href="#telc-reden">5. Redemittel Sprechen</a>
+      <a href="#bewertung">6. Критерии</a>
+      <a href="#fehler">7. Ошибки</a>
+      <a href="#wortschatz">8. Wortschatz</a>
+    </div>
+    <p class="rule" style="margin-top:12px;color:var(--muted-fg);font-size:12.5px">Если осталось время: <a href="#checkliste">чеклист</a> → отметь слабые темы и открой их из меню.</p>
+  </div>
+</div>
+
+<div class="card" id="telc-overview">
+  <div class="card-header"><span class="badge badge-num">49</span><div class="card-title">TELC B1 — Übersicht <span class="de">(обзор экзамена)</span></div></div>
+  <div class="card-content">
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Teil</th><th>Название</th><th>Время</th><th>Баллы</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Lesen</strong></td><td>Чтение (3 части)</td><td>~65 мин</td><td>75</td></tr>
+        <tr><td><strong>Hören</strong></td><td>Аудирование (3 части)</td><td>~40 мин</td><td>75</td></tr>
+        <tr><td><strong>Schreiben</strong></td><td>Письмо (2 части)</td><td>~60 мин</td><td>45</td></tr>
+        <tr><td><strong>Sprechen</strong></td><td>Говорение (3 части)</td><td>~15 мин</td><td>75</td></tr>
+        <tr><td><strong>Sprachbausteine</strong></td><td>Грамматика + лексика</td><td>~30 мин</td><td>30</td></tr>
+      </tbody>
+    </table></div>
+    <div class="alert alert-info"><span class="alert-icon">💡</span><div class="alert-body"><p>Для сдачи нужно <strong>≥ 60%</strong> в каждом разделе (Lesen, Hören, Schreiben, Sprechen) и <strong>≥ 180</strong> баллов суммарно. Sprachbausteine входит в Lesen.</p></div></div>
+    <div class="route-list" aria-label="Быстрый маршрут TELC">
+      <a href="#exam-30">30 мин</a>
+      <a href="#wortschatz">Wortschatz</a>
+      <a href="#musterbriefe">Schreiben</a>
+      <a href="#bausteine-fallen">Bausteine</a>
+      <a href="#telc-reden">Sprechen</a>
+      <a href="#bewertung">Bewertung</a>
+      <a href="#checkliste">Checkliste</a>
+    </div>
+  </div>
+</div>
 
 <div class="card" id="wortschatz">
   <div class="card-header"><span class="badge badge-num">61</span><div class="card-title">Themenwortschatz B1 <span class="de">(тематическая лексика)</span></div></div>
@@ -3625,6 +3627,105 @@ body.compact pre           { padding: 10px 12px; font-size: 12px; }
   </div>
 </div>
 
+<div class="card" id="briefe">
+  <div class="card-header"><span class="badge badge-num">39</span><div class="card-title">Briefe schreiben <span class="tr">(написание писем)</span></div></div>
+  <div class="card-content">
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th></th>
+        <th>Informeller Brief <span class="tr">(неофиц.)</span></th>
+        <th>Formeller Brief <span class="tr">(официальный)</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:600;color:var(--muted-fg);white-space:nowrap;font-size:11px">Anrede <span class="tr">(привет.)</span></td>
+          <td>
+            Lieber Franz, <span class="tr">(дорогой)</span><br>
+            Liebe Katja, <span class="tr">(дорогая)</span><br>
+            Liebe Franz und Katja,
+          </td>
+          <td>
+            Sehr geehrte Damen und Herren, <span class="tr">(уважаемые дамы и господа)</span><br>
+            Sehr geehrte Frau …, <span class="tr">(уважаемая госпожа)</span><br>
+            Sehr geehrter Herr …, <span class="tr">(уважаемый господин)</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;color:var(--muted-fg);white-space:nowrap;font-size:11px">Mittelteil <span class="tr">(осн. часть)</span></td>
+          <td>
+            vielen Dank für deinen Brief. <span class="tr">(спасибо за письмо)</span><br>
+            Es geht mir gut. <span class="tr">(у меня всё хорошо)</span><br>
+            Es gibt (nicht) viel Neues. <span class="tr">(есть/нет новостей)</span><br>
+            Sag mir bitte, … <span class="tr">(скажи мне пожалуйста)</span><br>
+            Ich möchte auch … <span class="tr">(я бы ещё хотел...)</span>
+          </td>
+          <td>
+            Ich heiße … und komme aus … <span class="tr">(меня зовут … из …)</span><br>
+            Ich möchte … <span class="tr">(я хотел бы…)</span><br>
+            Bitte geben Sie mir folgende Information: <span class="tr">(сообщите, пожалуйста)</span><br>
+            Ich möchte auch wissen, … <span class="tr">(я также хотел бы узнать)</span><br>
+            Sagen Sie auch, … <span class="tr">(скажите также)</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight:600;color:var(--muted-fg);white-space:nowrap;font-size:11px">Schluss <span class="tr">(завершение)</span></td>
+          <td>
+            Ich hoffe, wir sehen uns bald. <span class="tr">(надеюсь скоро увидимся)</span><br>
+            Melde dich! <span class="tr">(дай о себе знать!)</span><br>
+            Beste / Liebe Grüße, <span class="tr">(с уважением / с любовью)</span><br>
+            Deine / Dein … <span class="tr">(твоя / твой …)</span>
+          </td>
+          <td>
+            Vielen Dank für Ihre Bemühungen. <span class="tr">(спасибо за ваши усилия)</span><br>
+            Vielen Dank im Voraus. <span class="tr">(заранее благодарю)</span><br>
+            Mit freundlichen Grüßen, <span class="tr">(с уважением)</span><br>
+            Vorname Name <span class="tr">(имя фамилия)</span>
+          </td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="detail-block" style="border:1px solid var(--border);border-radius:var(--radius);padding:12px">
+        <div style="font-weight:600;margin-bottom:8px">Einladung <span class="tr">(приглашение)</span></div>
+        Ich lade dich zu meinem Geburtstag ein. <span class="tr">(приглашаю на день рождения)</span><br>
+        Bitte komm am … um … Uhr. <span class="tr">(приходи в … в … часов)</span><br>
+        Bring bitte … mit. <span class="tr">(принеси, пожалуйста, …)</span><br>
+        <br>
+        <em style="color:var(--muted-fg);font-size:12px">Ответ на приглашение:</em><br>
+        Vielen Dank für deine Einladung. <span class="tr">(спасибо за приглашение)</span><br>
+        Ich komme gerne. <span class="tr">(с удовольствием приду)</span><br>
+        Leider kann ich nicht kommen. <span class="tr">(к сожалению, не смогу)</span>
+      </div>
+      <div class="detail-block" style="border:1px solid var(--border);border-radius:var(--radius);padding:12px">
+        <div style="font-weight:600;margin-bottom:8px">Nützliche Phrasen <span class="tr">(полезные фразы)</span></div>
+        Ich schreibe dir, weil … <span class="tr">(пишу тебе, потому что…)</span><br>
+        Leider muss ich dir sagen, dass … <span class="tr">(к сожалению должен сказать)</span><br>
+        Ich freue mich auf deine Antwort. <span class="tr">(жду твоего ответа)</span><br>
+        Bitte antworte bald! <span class="tr">(ответь скорее!)</span><br>
+        Ich wünsche dir alles Gute. <span class="tr">(желаю всего хорошего)</span><br>
+        Gute Besserung! <span class="tr">(скорейшего выздоровления!)</span><br>
+        Viel Erfolg! <span class="tr">(удачи!)</span>
+      </div>
+    </div>
+
+    <div class="alert alert-info" style="margin-top:16px"><span class="alert-icon">📝</span><div class="alert-body">
+      <p class="alert-title">TELC B1 Schreiben <span class="tr">(экзамен)</span></p>
+      <p><strong>Teil 1:</strong> формальное письмо (~80 слов) — жалоба, запрос, отмена, бронирование. <strong>Teil 2:</strong> неформальное (~40 слов) — ответ другу, приглашение.</p>
+      <p style="margin-top:6px">Структура: <strong>Anrede → Einleitung → Hauptteil (3 пункта задания!) → Schluss → Grußformel</strong>. Не забыть все пункты Aufgabe — за каждый пункт баллы.</p>
+    </div></div>
+    <div class="tbl-wrap" style="margin-top:10px"><table>
+      <thead><tr><th>Тип письма TELC</th><th>Ключевые фразы</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Beschwerde</strong> <span class="tr">(жалоба)</span></td><td><em>Leider muss ich mich beschweren… / Ich bin mit … nicht zufrieden.</em></td></tr>
+        <tr><td><strong>Anfrage</strong> <span class="tr">(запрос)</span></td><td><em>Ich interessiere mich für… / Könnten Sie mir bitte mitteilen…?</em></td></tr>
+        <tr><td><strong>Stornierung</strong> <span class="tr">(отмена)</span></td><td><em>Leider muss ich meine Buchung stornieren… / Bitte bestätigen Sie die Stornierung.</em></td></tr>
+        <tr><td><strong>Einladung</strong> <span class="tr">(приглашение)</span></td><td><em>Ich lade Sie herzlich ein… / Es würde mich freuen, wenn Sie kommen könnten.</em></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
 <div class="card" id="musterbriefe">
   <div class="card-header"><span class="badge badge-num">62</span><div class="card-title">Musterbriefe TELC <span class="de">(готовые письма)</span></div></div>
   <div class="card-content">
@@ -3747,161 +3848,6 @@ Markus</pre>
   </div>
 </div>
 
-<div class="card" id="uhrzeit-datum">
-  <div class="card-header"><span class="badge badge-num">65</span><div class="card-title">Uhrzeit, Datum, Termine <span class="de">(время и даты)</span></div></div>
-  <div class="card-content">
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Тема</th><th>Примеры</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Uhrzeit</strong></td><td><em>um 8 Uhr / um halb neun (8:30) / um Viertel nach zehn (10:15) / um Viertel vor drei (14:45)</em></td></tr>
-        <tr><td><strong>24h vs 12h</strong></td><td><em>14 Uhr = zwei Uhr nachmittags · 20 Uhr = acht Uhr abends</em></td></tr>
-        <tr><td><strong>Datum</strong></td><td><em>am 15. Mai / am Montag, dem 3. Juni / vom 1. bis zum 5. Juli</em></td></tr>
-        <tr><td><strong>Termine</strong></td><td><em>einen Termin vereinbaren / verschieben / absagen · passt dir 17 Uhr?</em></td></tr>
-        <tr><td><strong>Dauer</strong></td><td><em>eine Stunde / zwei Tage / seit drei Wochen / für ein Jahr</em></td></tr>
-      </tbody>
-    </table></div>
-    <div class="alert alert-warn"><span class="alert-icon">⚠️</span><div class="alert-body"><p>Hören: записывай цифры сразу. <em>halb acht</em> = 7:30, не 8:30. <em>am</em> + дата, <em>um</em> + время.</p></div></div>
-  </div>
-</div>
-
-<div class="card" id="wortbildung">
-  <div class="card-header"><span class="badge badge-num">66</span><div class="card-title">Wortbildung <span class="de">(как угадывать слова)</span></div></div>
-  <div class="card-content">
-    <p class="rule" style="font-weight:600;margin-bottom:6px">Суффиксы существительных:</p>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Суффикс</th><th>Род / значение</th><th>Пример</th></tr></thead>
-      <tbody>
-        <tr><td><strong>-ung, -heit, -keit, -schaft, -tion</strong></td><td>обычно <span class="gf">die</span></td><td>Wohnung, Freiheit, Möglichkeit</td></tr>
-        <tr><td><strong>-er, -ling, -ismus</strong></td><td>обычно <span class="gm">der</span></td><td>Lehrer, Lehrling</td></tr>
-        <tr><td><strong>-chen, -lein, -ment, -um</strong></td><td>обычно <span class="gn">das</span></td><td>Mädchen, Dokument</td></tr>
-      </tbody>
-    </table></div>
-    <p class="rule" style="font-weight:600;margin:10px 0 6px">Приставки и суффиксы прилагательных/глаголов:</p>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Элемент</th><th>Значение</th><th>Пример</th></tr></thead>
-      <tbody>
-        <tr><td><strong>un-</strong></td><td>не-</td><td>unmöglich, unglücklich</td></tr>
-        <tr><td><strong>-bar</strong></td><td>-имый / можно</td><td>machbar, lesbar</td></tr>
-        <tr><td><strong>-los</strong></td><td>без-</td><td>arbeitslos, fehlerlos</td></tr>
-        <tr><td><strong>-voll</strong></td><td>полный</td><td>erfolgreich? → erfolgre<strong>ich</strong>; sinn<strong>voll</strong></td></tr>
-        <tr><td><strong>ver-, be-, er-</strong></td><td>часто меняют значение глагола</td><td>stehen → verstehen, suchen → besuchen</td></tr>
-        <tr><td><strong>-ieren</strong></td><td>глагол из иностранного слова</td><td>informieren, reservieren</td></tr>
-      </tbody>
-    </table></div>
-    <div class="alert alert-info"><span class="alert-icon">💡</span><div class="alert-body"><p>На Lesen/Sprachbausteine: не знаешь слово — смотри корень + приставку/суффикс. Часто хватает для смысла.</p></div></div>
-  </div>
-</div>
-
-<div class="card" id="bausteine-fallen">
-  <div class="card-header"><span class="badge badge-num">67</span><div class="card-title">Ловушки Sprachbausteine <span class="de">(частые пары)</span></div></div>
-  <div class="card-content">
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Пара</th><th>Разница</th><th>Подсказка</th></tr></thead>
-      <tbody>
-        <tr><td><strong>weil / denn</strong></td><td>weil → глагол в конец; denn → Hauptsatz</td><td><em>…, weil er krank <strong>ist</strong>. / …, denn er <strong>ist</strong> krank.</em></td></tr>
-        <tr><td><strong>als / wenn</strong></td><td>als = 1× прошлое; wenn = повтор / настоящее</td><td><em>Als ich Kind war… / Wenn es regnet…</em></td></tr>
-        <tr><td><strong>dass / ob</strong></td><td>dass = факт; ob = вопрос «ли»</td><td><em>Ich weiß, dass… / Ich frage, ob…</em></td></tr>
-        <tr><td><strong>kennen / wissen</strong></td><td>kennen = человек/место; wissen = факт</td><td><em>Ich kenne ihn. / Ich weiß das.</em></td></tr>
-        <tr><td><strong>legen / liegen</strong></td><td>legen = класть (Akk); liegen = лежать (Dat)</td><td><em>Ich lege das Buch auf den Tisch. / Es liegt auf dem Tisch.</em></td></tr>
-        <tr><td><strong>stellen / stehen</strong></td><td>stellen = ставить; stehen = стоять</td><td>Wohin? → Akk · Wo? → Dat</td></tr>
-        <tr><td><strong>setzen / sitzen</strong></td><td>setzen = сажать; sitzen = сидеть</td><td>то же правило Wo/Wohin</td></tr>
-        <tr><td><strong>sein / haben</strong> (Perfekt)</td><td>движение/смена состояния → sein</td><td>gehen, kommen, werden, bleiben → sein</td></tr>
-        <tr><td><strong>den / dem / der</strong></td><td>Akk м.р. / Dat м+с / Dat ж.р. или Gen</td><td>смотри предлог и роль слова</td></tr>
-        <tr><td><strong>ein / eine / einen</strong></td><td>м/с / ж / Akk м.р.</td><td>часто после глагола с Akk</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-</div>
-
-<div class="card" id="bewertung">
-  <div class="card-header"><span class="badge badge-num">68</span><div class="card-title">Критерии оценки <span class="de">(Schreiben &amp; Sprechen)</span></div></div>
-  <div class="card-content">
-    <p class="rule" style="font-weight:600">Schreiben — перед сдачей проверь:</p>
-    <ul class="rlist">
-      <li><strong>Все пункты Aufgabe</strong> закрыты (каждый пункт = баллы)</li>
-      <li>Объём: Teil 1 ~80 Wörter, Teil 2 ~40 Wörter (±10%)</li>
-      <li>Единый стиль: только <strong>Sie</strong> или только <strong>du</strong></li>
-      <li>Структура: Anrede → Einleitung → Hauptteil → Schluss → Grußformel</li>
-      <li>Связность: deshalb, außerdem, leider, zuerst…</li>
-      <li>Понятность важнее идеальной грамматики — но грубые ошибки (падеж, глагол) снижают балл</li>
-    </ul>
-    <p class="rule" style="font-weight:600;margin-top:12px">Sprechen — экзаменаторы смотрят:</p>
-    <ul class="rlist">
-      <li><strong>Aufgabenerfüllung</strong> — ответил ли на задание / тему</li>
-      <li><strong>Interaktion</strong> — задаёшь вопросы, реагируешь, не монолог</li>
-      <li><strong>Flüssigkeit</strong> — говоришь без долгих пауз (можно медленно)</li>
-      <li><strong>Wortschatz &amp; Strukturen</strong> — разные слова, Nebensätze, Konjunktiv II вежливо</li>
-      <li><strong>Aussprache</strong> — понятность, не акцент</li>
-    </ul>
-    <div class="alert alert-info"><span class="alert-icon">💡</span><div class="alert-body"><p>Минимум 60% в Schreiben и Sprechen отдельно. Лучше просто и понятно, чем сложно и с ошибками.</p></div></div>
-  </div>
-</div>
-
-<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Практика</span><div class="level-sep-line"></div></div>
-
-<div class="card" id="checkliste">
-  <div class="card-header"><span class="badge badge-num">47</span><div class="card-title">B1 Grammatik-Checkliste <span class="de">(самопроверка)</span></div></div>
-  <div class="card-content">
-    <div class="checklist-toolbar">
-      <span class="checklist-progress" id="checklistProgress">0 / 0</span>
-      <button type="button" class="btn btn-outline checklist-reset" onclick="resetChecklist()">Сбросить</button>
-    </div>
-    <div id="checklistRoot" class="checklist-root"></div>
-  </div>
-</div>
-
-<div class="card" id="fehler">
-  <div class="card-header"><span class="badge badge-num">48</span><div class="card-title">Типичные ошибки <span class="de">(Fehlerprotokoll)</span></div></div>
-  <div class="card-content">
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Ошибка</th><th>Правильно</th><th>Правило</th></tr></thead>
-      <tbody>
-        <tr><td><em>Ich gehe <span class="hl">in die</span> Schule.</em> <span class="tr">(каждый день)</span></td><td><em>Ich gehe <strong>zur</strong> Schule.</em></td><td>zu + Dat. для учреждений, in + Akk. = внутрь</td></tr>
-        <tr><td><em>Ich warte <span class="hl">für</span> dich.</em></td><td><em>Ich warte <strong>auf</strong> dich.</em></td><td>warten <strong>auf</strong> + Akk.</td></tr>
-        <tr><td><em>der Mann, <span class="hl">die</span> ich kenne</em></td><td><em>der Mann, <strong>den</strong> ich kenne</em></td><td>Relativpronomen: Akk. м.р. = den</td></tr>
-        <tr><td><em>Wenn ich <span class="hl">war</span> klein…</em></td><td><em><strong>Als</strong> ich klein <strong>war</strong>…</em></td><td>als = однократно в прошлом</td></tr>
-        <tr><td><em>Ich habe <span class="hl">gegangen</span>.</em></td><td><em>Ich bin <strong>gegangen</strong>.</em></td><td>gehen → <strong>sein</strong> + Partizip II</td></tr>
-        <tr><td><em>mit <span class="hl">der</span> Bus</em></td><td><em>mit <strong>dem</strong> Bus</em></td><td>mit → Dativ</td></tr>
-        <tr><td><em>den <span class="hl">Herr</span></em></td><td><em>den Herr<strong>en</strong></em></td><td>n-Deklination: Akk. = -en</td></tr>
-        <tr><td><em>Ich freue mich <span class="hl">für</span> das Geschenk.</em></td><td><em>Ich freue mich <strong>über</strong> das Geschenk.</em></td><td>freuen über (сверш.) vs. auf (будущ.)</td></tr>
-        <tr><td><em>…, <span class="hl">dass</span> er kommt.</em> <span class="tr">(вопрос)</span></td><td><em>…, <strong>ob</strong> er kommt.</em></td><td>косвенный вопрос = ob, не dass</td></tr>
-        <tr><td><em>ein <span class="hl">gut</span> Mann</em></td><td><em>ein <strong>guter</strong> Mann</em></td><td>слабое склонение: Nom. м.р. = -er</td></tr>
-        <tr><td><em>Ich <span class="hl">kann</span> gestern nicht kommen.</em></td><td><em>Ich <strong>konnte</strong> gestern nicht kommen.</em></td><td>прошлое → Präteritum модальных</td></tr>
-        <tr><td><em>…, weil er <span class="hl">kommt</span> nicht.</em></td><td><em>…, weil er <strong>nicht kommt</strong>.</em></td><td>в Nebensatz глагол в конец, nicht перед глаголом</td></tr>
-      </tbody>
-    </table></div>
-    <div class="alert alert-info"><span class="alert-icon">💡</span><div class="alert-body"><p>Записывай свои ошибки из упражнений и устной речи — повторяй через неделю. Паттерн важнее отдельных слов.</p></div></div>
-  </div>
-</div>
-
-<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">TELC B1</span><div class="level-sep-line"></div></div>
-
-<div class="card" id="telc-overview">
-  <div class="card-header"><span class="badge badge-num">49</span><div class="card-title">TELC B1 — Übersicht <span class="de">(обзор экзамена)</span></div></div>
-  <div class="card-content">
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Teil</th><th>Название</th><th>Время</th><th>Баллы</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Lesen</strong></td><td>Чтение (3 части)</td><td>~65 мин</td><td>75</td></tr>
-        <tr><td><strong>Hören</strong></td><td>Аудирование (3 части)</td><td>~40 мин</td><td>75</td></tr>
-        <tr><td><strong>Schreiben</strong></td><td>Письмо (2 части)</td><td>~60 мин</td><td>45</td></tr>
-        <tr><td><strong>Sprechen</strong></td><td>Говорение (3 части)</td><td>~15 мин</td><td>75</td></tr>
-        <tr><td><strong>Sprachbausteine</strong></td><td>Грамматика + лексика</td><td>~30 мин</td><td>30</td></tr>
-      </tbody>
-    </table></div>
-    <div class="alert alert-info"><span class="alert-icon">💡</span><div class="alert-body"><p>Для сдачи нужно <strong>≥ 60%</strong> в каждом разделе (Lesen, Hören, Schreiben, Sprechen) и <strong>≥ 180</strong> баллов суммарно. Sprachbausteine входит в Lesen.</p></div></div>
-    <div class="route-list" aria-label="Быстрый маршрут TELC">
-      <a href="#telc-lesen">Lesen</a>
-      <a href="#telc-hoeren">Hören</a>
-      <a href="#musterbriefe">Schreiben</a>
-      <a href="#bausteine-fallen">Bausteine</a>
-      <a href="#telc-s1-kennen">Sprechen</a>
-      <a href="#bewertung">Bewertung</a>
-      <a href="#wortschatz">Wortschatz</a>
-    </div>
-  </div>
-</div>
-
 <div class="card" id="telc-lesen">
   <div class="card-header"><span class="badge badge-num">50</span><div class="card-title">Leseverstehen <span class="de">(чтение)</span></div></div>
   <div class="card-content">
@@ -3936,6 +3882,27 @@ Markus</pre>
     <p class="rule" style="font-weight:600;margin-top:10px">Teil 2 — Lückentext ohne Wörter <span class="tr">(без списка)</span></p>
     <ul class="rlist"><li>10 пропусков — артикли, предлоги, союзы, формы глагола. Читай всё предложение целиком.</li><li>Проверяй: глагол на 2-м месте? В Nebensatz — в конце?</li></ul>
     <div class="alert alert-warn"><span class="alert-icon">⚠️</span><div class="alert-body"><p>После заполнения — перечитай текст целиком. Несогласованный артикль часто «чувствуется» на слух.</p></div></div>
+  </div>
+</div>
+
+<div class="card" id="bausteine-fallen">
+  <div class="card-header"><span class="badge badge-num">67</span><div class="card-title">Ловушки Sprachbausteine <span class="de">(частые пары)</span></div></div>
+  <div class="card-content">
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Пара</th><th>Разница</th><th>Подсказка</th></tr></thead>
+      <tbody>
+        <tr><td><strong>weil / denn</strong></td><td>weil → глагол в конец; denn → Hauptsatz</td><td><em>…, weil er krank <strong>ist</strong>. / …, denn er <strong>ist</strong> krank.</em></td></tr>
+        <tr><td><strong>als / wenn</strong></td><td>als = 1× прошлое; wenn = повтор / настоящее</td><td><em>Als ich Kind war… / Wenn es regnet…</em></td></tr>
+        <tr><td><strong>dass / ob</strong></td><td>dass = факт; ob = вопрос «ли»</td><td><em>Ich weiß, dass… / Ich frage, ob…</em></td></tr>
+        <tr><td><strong>kennen / wissen</strong></td><td>kennen = человек/место; wissen = факт</td><td><em>Ich kenne ihn. / Ich weiß das.</em></td></tr>
+        <tr><td><strong>legen / liegen</strong></td><td>legen = класть (Akk); liegen = лежать (Dat)</td><td><em>Ich lege das Buch auf den Tisch. / Es liegt auf dem Tisch.</em></td></tr>
+        <tr><td><strong>stellen / stehen</strong></td><td>stellen = ставить; stehen = стоять</td><td>Wohin? → Akk · Wo? → Dat</td></tr>
+        <tr><td><strong>setzen / sitzen</strong></td><td>setzen = сажать; sitzen = сидеть</td><td>то же правило Wo/Wohin</td></tr>
+        <tr><td><strong>sein / haben</strong> (Perfekt)</td><td>движение/смена состояния → sein</td><td>gehen, kommen, werden, bleiben → sein</td></tr>
+        <tr><td><strong>den / dem / der</strong></td><td>Akk м.р. / Dat м+с / Dat ж.р. или Gen</td><td>смотри предлог и роль слова</td></tr>
+        <tr><td><strong>ein / eine / einen</strong></td><td>м/с / ж / Akk м.р.</td><td>часто после глагола с Akk</td></tr>
+      </tbody>
+    </table></div>
   </div>
 </div>
 
@@ -4010,6 +3977,30 @@ Markus</pre>
   </div>
 </div>
 
+<div class="card" id="bewertung">
+  <div class="card-header"><span class="badge badge-num">68</span><div class="card-title">Критерии оценки <span class="de">(Schreiben &amp; Sprechen)</span></div></div>
+  <div class="card-content">
+    <p class="rule" style="font-weight:600">Schreiben — перед сдачей проверь:</p>
+    <ul class="rlist">
+      <li><strong>Все пункты Aufgabe</strong> закрыты (каждый пункт = баллы)</li>
+      <li>Объём: Teil 1 ~80 Wörter, Teil 2 ~40 Wörter (±10%)</li>
+      <li>Единый стиль: только <strong>Sie</strong> или только <strong>du</strong></li>
+      <li>Структура: Anrede → Einleitung → Hauptteil → Schluss → Grußformel</li>
+      <li>Связность: deshalb, außerdem, leider, zuerst…</li>
+      <li>Понятность важнее идеальной грамматики — но грубые ошибки (падеж, глагол) снижают балл</li>
+    </ul>
+    <p class="rule" style="font-weight:600;margin-top:12px">Sprechen — экзаменаторы смотрят:</p>
+    <ul class="rlist">
+      <li><strong>Aufgabenerfüllung</strong> — ответил ли на задание / тему</li>
+      <li><strong>Interaktion</strong> — задаёшь вопросы, реагируешь, не монолог</li>
+      <li><strong>Flüssigkeit</strong> — говоришь без долгих пауз (можно медленно)</li>
+      <li><strong>Wortschatz &amp; Strukturen</strong> — разные слова, Nebensätze, Konjunktiv II вежливо</li>
+      <li><strong>Aussprache</strong> — понятность, не акцент</li>
+    </ul>
+    <div class="alert alert-info"><span class="alert-icon">💡</span><div class="alert-body"><p>Минимум 60% в Schreiben и Sprechen отдельно. Лучше просто и понятно, чем сложно и с ошибками.</p></div></div>
+  </div>
+</div>
+
 <div class="card" id="telc-tipps">
   <div class="card-header"><span class="badge badge-num">58</span><div class="card-title">Vorbereitungstipps <span class="de">(советы по частям)</span></div></div>
   <div class="card-content">
@@ -4053,8 +4044,46 @@ Markus</pre>
   </div>
 </div>
 
+
+<div class="level-sep"><div class="level-sep-line"></div><span class="level-sep-label">Практика</span><div class="level-sep-line"></div></div>
+
+<div class="card" id="checkliste">
+  <div class="card-header"><span class="badge badge-num">47</span><div class="card-title">B1 Grammatik-Checkliste <span class="de">(самопроверка)</span></div></div>
+  <div class="card-content">
+    <div class="checklist-toolbar">
+      <span class="checklist-progress" id="checklistProgress">0 / 0</span>
+      <button type="button" class="btn btn-outline checklist-reset" onclick="resetChecklist()">Сбросить</button>
+    </div>
+    <div id="checklistRoot" class="checklist-root"></div>
+  </div>
+</div>
+
+<div class="card" id="fehler">
+  <div class="card-header"><span class="badge badge-num">48</span><div class="card-title">Типичные ошибки <span class="de">(Fehlerprotokoll)</span></div></div>
+  <div class="card-content">
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Ошибка</th><th>Правильно</th><th>Правило</th></tr></thead>
+      <tbody>
+        <tr><td><em>Ich gehe <span class="hl">in die</span> Schule.</em> <span class="tr">(каждый день)</span></td><td><em>Ich gehe <strong>zur</strong> Schule.</em></td><td>zu + Dat. для учреждений, in + Akk. = внутрь</td></tr>
+        <tr><td><em>Ich warte <span class="hl">für</span> dich.</em></td><td><em>Ich warte <strong>auf</strong> dich.</em></td><td>warten <strong>auf</strong> + Akk.</td></tr>
+        <tr><td><em>der Mann, <span class="hl">die</span> ich kenne</em></td><td><em>der Mann, <strong>den</strong> ich kenne</em></td><td>Relativpronomen: Akk. м.р. = den</td></tr>
+        <tr><td><em>Wenn ich <span class="hl">war</span> klein…</em></td><td><em><strong>Als</strong> ich klein <strong>war</strong>…</em></td><td>als = однократно в прошлом</td></tr>
+        <tr><td><em>Ich habe <span class="hl">gegangen</span>.</em></td><td><em>Ich bin <strong>gegangen</strong>.</em></td><td>gehen → <strong>sein</strong> + Partizip II</td></tr>
+        <tr><td><em>mit <span class="hl">der</span> Bus</em></td><td><em>mit <strong>dem</strong> Bus</em></td><td>mit → Dativ</td></tr>
+        <tr><td><em>den <span class="hl">Herr</span></em></td><td><em>den Herr<strong>en</strong></em></td><td>n-Deklination: Akk. = -en</td></tr>
+        <tr><td><em>Ich freue mich <span class="hl">für</span> das Geschenk.</em></td><td><em>Ich freue mich <strong>über</strong> das Geschenk.</em></td><td>freuen über (сверш.) vs. auf (будущ.)</td></tr>
+        <tr><td><em>…, <span class="hl">dass</span> er kommt.</em> <span class="tr">(вопрос)</span></td><td><em>…, <strong>ob</strong> er kommt.</em></td><td>косвенный вопрос = ob, не dass</td></tr>
+        <tr><td><em>ein <span class="hl">gut</span> Mann</em></td><td><em>ein <strong>guter</strong> Mann</em></td><td>слабое склонение: Nom. м.р. = -er</td></tr>
+        <tr><td><em>Ich <span class="hl">kann</span> gestern nicht kommen.</em></td><td><em>Ich <strong>konnte</strong> gestern nicht kommen.</em></td><td>прошлое → Präteritum модальных</td></tr>
+        <tr><td><em>…, weil er <span class="hl">kommt</span> nicht.</em></td><td><em>…, weil er <strong>nicht kommt</strong>.</em></td><td>в Nebensatz глагол в конец, nicht перед глаголом</td></tr>
+      </tbody>
+    </table></div>
+    <div class="alert alert-info"><span class="alert-icon">💡</span><div class="alert-body"><p>Записывай свои ошибки из упражнений и устной речи — повторяй через неделю. Паттерн важнее отдельных слов.</p></div></div>
+  </div>
+</div>
+
 <div id="search-noresult">Ничего не найдено 🔍</div>
-<footer>68 тем · Goethe / TELC B1 · Viel Erfolg! 🇩🇪</footer>
+<footer>68 тем · 3 режима · Goethe / TELC B1 · Viel Erfolg! 🇩🇪</footer>
 </main>
 </div>
 
@@ -4670,58 +4699,58 @@ Markus</pre>
     {
       title: 'Падежи и артикли',
       items: [
-        'Знаю окончания der/die/das во всех падежах',
-        'Различаю Akkusativ и Dativ после предлогов',
-        'Понимаю Wechselpräpositionen (Wo/Wohin)',
-        'Умею n-Deklination (den Herrn, dem Studenten)',
-        'Склоняю притяжательные и dieser/welcher'
+        { text: 'Знаю окончания der/die/das во всех падежах', href: '#s4-summary' },
+        { text: 'Различаю Akkusativ и Dativ после предлогов', href: '#quick' },
+        { text: 'Понимаю Wechselpräpositionen (Wo/Wohin)', href: '#s7' },
+        { text: 'Умею n-Deklination (den Herrn, dem Studenten)', href: '#n-deklination' },
+        { text: 'Склоняю притяжательные и dieser/welcher', href: '#s3' }
       ]
     },
     {
       title: 'Глагол',
       items: [
-        'Образую Perfekt (haben/sein + Partizip II)',
-        'Знаю Präteritum модальных и частых глаголов',
-        'Понимаю Plusquamperfekt (nachdem + hatte/war + P.II)',
-        'Умею Futur I (werde + Infinitiv)',
-        'Отделяю приставки (anfangen, mitkommen)',
-        'Знаю Reflexive Verben (sich freuen, sich interessieren)',
-        'Помню Verben mit Präposition (warten auf, denken an)',
-        'Умею Modal im Perfekt (hat … kommen können)'
+        { text: 'Образую Perfekt (haben/sein + Partizip II)', href: '#s10' },
+        { text: 'Знаю Präteritum модальных и частых глаголов', href: '#s11' },
+        { text: 'Понимаю Plusquamperfekt (nachdem + hatte/war + P.II)', href: '#s12' },
+        { text: 'Умею Futur I (werde + Infinitiv)', href: '#s13' },
+        { text: 'Отделяю приставки (anfangen, mitkommen)', href: '#s19' },
+        { text: 'Знаю Reflexive Verben (sich freuen, sich interessieren)', href: '#s20' },
+        { text: 'Помню Verben mit Präposition (warten auf, denken an)', href: '#s31' },
+        { text: 'Умею Modal im Perfekt (hat … kommen können)', href: '#modal-perfekt' }
       ]
     },
     {
       title: 'Предложение',
       items: [
-        'Глагол на 2-м месте в Hauptsatz',
-        'Глагол в конце Nebensatz (weil, dass, wenn)',
-        'Строю Relativsätze (der/den/dem/dessen)',
-        'Использую Temporalsätze (als/wenn, nachdem, bevor)',
-        'Знаю TeKaMoLo (Temporal → Kausal → Modal → Lokal)',
-        'Различаю wenn и als, dass и ob'
+        { text: 'Глагол на 2-м месте в Hauptsatz', href: '#s22' },
+        { text: 'Глагол в конце Nebensatz (weil, dass, wenn)', href: '#s23' },
+        { text: 'Строю Relativsätze (der/den/dem/dessen)', href: '#s24' },
+        { text: 'Использую Temporalsätze (als/wenn, nachdem, bevor)', href: '#temporal' },
+        { text: 'Знаю TeKaMoLo (Temporal → Kausal → Modal → Lokal)', href: '#s22' },
+        { text: 'Различаю wenn и als, dass и ob', href: '#bausteine-fallen' }
       ]
     },
     {
       title: 'Формы и стиль',
       items: [
-        'Konjunktiv II (würde, hätte, wäre, könnte)',
-        'Passiv (wird/wurde + Partizip II)',
-        'Komparativ und Superlativ',
-        'Adjektivdeklination (слабое/смешанное/сильное)',
-        'Indirekte Rede (er sagt, er sei / er habe)',
-        'Вежливый Konjunktiv II в письмах (Könnten Sie…)'
+        { text: 'Konjunktiv II (würde, hätte, wäre, könnte)', href: '#s15' },
+        { text: 'Passiv (wird/wurde + Partizip II)', href: '#s17' },
+        { text: 'Komparativ und Superlativ', href: '#s27' },
+        { text: 'Adjektivdeklination (слабое/смешанное/сильное)', href: '#s8' },
+        { text: 'Indirekte Rede (er sagt, er sei / er habe)', href: '#s29' },
+        { text: 'Вежливый Konjunktiv II в письмах (Könnten Sie…)', href: '#konj2-hoeflich' }
       ]
     },
     {
       title: 'TELC B1',
       items: [
-        'Знаю структуру экзамена (Lesen, Hören, Schreiben, Sprechen)',
-        'Умею писать формальное и неформальное письмо',
-        'Знаю Redemittel для Sprechen (согласие, несогласие, предложение)',
-        'Прошёл хотя бы один пробный тест полностью',
-        'Повторил Themenwortschatz (Arbeit, Wohnung, Reisen…)',
-        'Знаю ловушки Sprachbausteine (weil/denn, als/wenn…)',
-        'Проверил письмо по критериям Bewertung'
+        { text: 'Знаю структуру экзамена (Lesen, Hören, Schreiben, Sprechen)', href: '#telc-overview' },
+        { text: 'Умею писать формальное и неформальное письмо', href: '#musterbriefe' },
+        { text: 'Знаю Redemittel для Sprechen (согласие, несогласие, предложение)', href: '#telc-reden' },
+        { text: 'Прошёл хотя бы один пробный тест полностью', href: '#exam-30' },
+        { text: 'Повторил Themenwortschatz (Arbeit, Wohnung, Reisen…)', href: '#wortschatz' },
+        { text: 'Знаю ловушки Sprachbausteine (weil/denn, als/wenn…)', href: '#bausteine-fallen' },
+        { text: 'Проверил письмо по критериям Bewertung', href: '#bewertung' }
       ]
     }
   ];
@@ -4761,7 +4790,9 @@ Markus</pre>
       title.className = 'checklist-group-title';
       title.textContent = group.title;
       gEl.appendChild(title);
-      group.items.forEach(function(label) {
+      group.items.forEach(function(item) {
+        const labelText = typeof item === 'string' ? item : item.text;
+        const href = typeof item === 'string' ? null : item.href;
         const id = 'chk-' + idx;
         const row = document.createElement('label');
         row.className = 'checklist-item' + (state[id] ? ' done' : '');
@@ -4778,7 +4809,15 @@ Markus</pre>
         });
         const span = document.createElement('span');
         span.className = 'checklist-label';
-        span.textContent = label;
+        if (href) {
+          const a = document.createElement('a');
+          a.href = href;
+          a.textContent = labelText;
+          a.addEventListener('click', function(e) { e.stopPropagation(); });
+          span.appendChild(a);
+        } else {
+          span.textContent = labelText;
+        }
         row.appendChild(cb);
         row.appendChild(span);
         gEl.appendChild(row);
